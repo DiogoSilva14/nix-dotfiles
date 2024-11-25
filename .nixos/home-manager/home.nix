@@ -2,6 +2,10 @@
 let
 	nixConfigDir = "~/.nixos/";
 in {
+	imports = [
+		./zsh.nix
+	];
+
 	home = {
 		username = "dps";
 		homeDirectory = "/home/dps";
@@ -10,12 +14,6 @@ in {
 		packages = with pkgs; [
 			neofetch
 		];
-	};
-
-	programs.zsh = {
-		shellAliases = {
-			rebuild = "sudo nixos-rebuild switch --flake ${nixConfigDir} && home-manager switch --flake ${nixConfigDir}";
-		};
 	};
 
 	programs.neovim = {
