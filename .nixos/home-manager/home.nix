@@ -13,7 +13,6 @@ in {
 	};
 
 	programs.zsh = {
-		enable = true;
 		shellAliases = {
 			rebuild = "sudo nixos-rebuild switch --flake ${nixConfigDir} && home-manager switch --flake ${nixConfigDir}";
 		};

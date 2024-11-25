@@ -12,7 +12,10 @@
 		home-manager
 	];
 
-	programs.firefox.enable = true;
+	programs = {
+		firefox.enable = true;
+		zsh.enable = true;
+	};
 
 	services.openssh.enable = true;
 }
