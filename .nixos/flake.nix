@@ -18,12 +18,12 @@
 
 		nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
 			inherit system;
-			modules = [ ./configuration.nix	];
+			modules = [ ./nixos/configuration.nix ];
 		};
 
 		homeConfigurations.dps = home-manager.lib.homeManagerConfiguration {
 			pkgs = nixpkgs.legacyPackages.${system};
-			modules = [ ./home.nix ];
+			modules = [ ./home-manager/home.nix ];
 		};
 	};
 }
