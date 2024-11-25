@@ -1,9 +1,8 @@
 { config, pkgs, ... }: 
-let
-	nixConfigDir = "~/.nixos/";
-in {
+{
 	imports = [
 		./zsh.nix
+		./modules/bundle.nix
 	];
 
 	home = {
