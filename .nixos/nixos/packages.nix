@@ -8,6 +8,9 @@
 		wget
 		git
 
+		# Media
+		mpv
+
 		# Other
 		home-manager
 	];
