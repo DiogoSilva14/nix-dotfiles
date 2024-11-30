@@ -1,7 +1,6 @@
 { config, pkgs, ... }: 
 {
 	imports = [
-		./zsh.nix
 		./modules/bundle.nix
 	];
 
@@ -13,9 +12,5 @@
 		packages = with pkgs; [
 			neofetch
 		];
-	};
-
-	programs.neovim = {
-		enable = true;
 	};
 }
