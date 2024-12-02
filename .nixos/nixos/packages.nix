@@ -10,6 +10,10 @@
 
 		# Media
 		mpv
+		spotify
+
+		# Intel GPU Acceleration
+		intel-media-sdk
 
 		# Other
 		home-manager
