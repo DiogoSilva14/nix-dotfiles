@@ -8,7 +8,7 @@
 
 		shellAliases =
 		let
-			flakeDir = "~/nix-dotfiles/.nixos";
+			flakeDir = "~/nix-dotfiles";
 		in {
 			rebuild = "sudo nixos-rebuild switch --flake ${flakeDir} && home-manager switch --flake ${flakeDir}";
 			hms = "home-manager switch --flake ${flakeDir}";
