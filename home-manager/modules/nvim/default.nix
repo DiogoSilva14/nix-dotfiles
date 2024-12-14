@@ -1,4 +1,10 @@
-{  lib, config, pkgs, ... }: {
+{ lib, config, pkgs, ... }: {
+
+	imports = [
+		./keymaps.nix
+		./plugins.nix
+	];
+
 	programs.nixvim = {
 		enable = true;
 		defaultEditor = true;
@@ -6,16 +12,15 @@
 		viAlias = true;
 		vimAlias = true;
 
-        	colorschemes.catppuccin.enable = true;
-        	plugins.lualine.enable = true;
+		colorschemes.catppuccin.enable = true;
+		plugins.lualine.enable = true;
 
 		clipboard = {
 			register = "unnamedplus";
 			providers.wl-copy.enable = true;
 		};
 
-		globals.mapleader = " ";
-
+		# Highlight white characters
 		extraConfigLua = ''
 			vim.opt.list = true
 			vim.opt.listchars = {
