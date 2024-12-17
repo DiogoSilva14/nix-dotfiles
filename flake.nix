@@ -9,10 +9,10 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-        nixvim = {
-            url = "github:nix-community/nixvim";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
+		nixvim = {
+			url = "github:nix-community/nixvim";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
 	outputs = { self, nixpkgs, home-manager, nixvim, ... }@inputs:
@@ -29,9 +29,17 @@
 		homeConfigurations.dps = home-manager.lib.homeManagerConfiguration {
 			pkgs = nixpkgs.legacyPackages.${system};
 			modules = [
-                ./home-manager/home.nix
-                nixvim.homeManagerModules.nixvim
-            ];
+				./home-manager/home_dps.nix
+				nixvim.homeManagerModules.nixvim
+			];
+		};
+
+		homeConfigurations.paissilva = home-manager.lib.homeManagerConfiguration {
+			pkgs = nixpkgs.legacyPackages.${system};
+			modules = [
+				./home-manager/home_paissilva.nix
+				nixvim.homeManagerModules.nixvim
+			];
 		};
 	};
 }

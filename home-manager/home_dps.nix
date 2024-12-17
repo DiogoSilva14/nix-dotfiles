@@ -8,9 +8,5 @@
 		username = "dps";
 		homeDirectory = "/home/dps";
 		stateVersion = "24.11";
-
-		packages = with pkgs; [
-			neofetch
-		];
 	};
 }
