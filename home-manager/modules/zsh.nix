@@ -1,4 +1,4 @@
-{ config, ... }: 
+{ config, ... }:
 {
 	programs.zsh = {
 		enable = true;
@@ -11,7 +11,7 @@
 			flakeDir = "~/nix-dotfiles";
 		in {
 			rebuild = "sudo nixos-rebuild switch --flake ${flakeDir} && home-manager switch --flake ${flakeDir}";
-			hms = "home-manager switch --flake ${flakeDir}";
+			hms = "nix run nixpkgs#home-manager -- switch --flake ${flakeDir}";
 
 			fd = "cd ${flakeDir}";
 
@@ -23,8 +23,17 @@
 
 		oh-my-zsh = {
 			enable = true;
-			plugins = [ "git" "sudo" ];
+			plugins = [
+				"git"
+				"sudo"
+			];
 			theme = "agnoster";
 		};
+
+		initExtra = "
+			if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
+				. ~/.nix-profile/etc/profile.d/nix.sh
+			fi
+		";
 	};
 }
