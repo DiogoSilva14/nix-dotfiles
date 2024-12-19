@@ -5,6 +5,10 @@ programs.waybar = {
 	systemd.enable = true;
 	style = ''
 		${builtins.readFile "${pkgs.waybar}/etc/xdg/waybar/style.css"}
+		* {
+			font-family: "Ubuntu Mono", "Font Awesome 6 Free Solid";
+		}
+
 		window#waybar {
 			background: rgba(17, 17, 17, 0.7);
 			border-bottom: none;
@@ -15,12 +19,13 @@ programs.waybar = {
 			margin-left: 10px;
 			padding: 0px 0px 0px 5px;
 		}
+
+		#custom-waybar-mpris {
+			background: rgba(255, 255, 255, 0.5);
+		}
 	'';
 
 	settings = [{
-		output = [
-			"eDP-1"
-		];
 		height = 30;
 		layer = "top";
 		position = "top";
@@ -28,6 +33,7 @@ programs.waybar = {
 		modules-center = [ "sway/window" ];
 		modules-left = [ "sway/workspaces" "sway/mode" ];
 		modules-right = [
+			"custom/waybar-mpris"
 			"pulseaudio"
 			"network"
 			"cpu"
@@ -84,6 +90,14 @@ programs.waybar = {
 			on-click = "pavucontrol";
 		};
 		"sway/mode" = { format = ''<span style="italic">{}</span>''; };
+		"custom/waybar-mpris"= {
+			return-type = "json";
+			exec = "~/.nix-profile/bin/waybar-mpris --position --autofocus";
+			on-click = "~/.nix-profile/bin/waybar-mpris --send toggle";
+			on-scroll-up = "~/.nix-profile/bin/waybar-mpris --send next";
+			on-scroll-down = "~/.nix-profile/bin/waybar-mpris --send prev";
+			escape = true;
+		};
 		temperature = {
 			thermal-zone = 4;
 			critical-threshold = 80;
@@ -92,11 +106,8 @@ programs.waybar = {
 		};
 	}];
 };
-
-fonts.fontconfig.enable = true;
-
-home.packages = with pkgs; [
-	font-awesome
+	
+home.packages = [
+	pkgs.waybar-mpris
 ];
 }
-

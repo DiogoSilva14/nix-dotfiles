@@ -1,6 +1,7 @@
 {
 	imports = [
 		./catppuccin.nix
+		./font.nix
 		./git.nix
 		./htop.nix
 		./kitty.nix
