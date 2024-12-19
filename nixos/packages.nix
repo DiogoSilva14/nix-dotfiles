@@ -7,8 +7,10 @@
 		# CLI
 		wget
 		git
+		ripgrep
 
 		# Media
+		discord
 		mpv
 		spotify
 
@@ -17,10 +19,20 @@
 
 		# Other
 		home-manager
+		pavucontrol
+		spice
+		win-spice
+		spice-gtk
 	];
+
+	virtualisation.spiceUSBRedirection.enable = true;
+	services.spice-vdagentd.enable = true;
+	virtualisation.libvirtd.enable = true;
 
 	programs = {
 		firefox.enable = true;
+		virt-manager.enable = true;
+		sway.enable = true;
 		zsh.enable = true;
 	};
 
