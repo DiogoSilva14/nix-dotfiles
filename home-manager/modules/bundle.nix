@@ -1,5 +1,6 @@
 {
 	imports = [
+		./catppuccin.nix
 		./git.nix
 		./htop.nix
 		./kitty.nix

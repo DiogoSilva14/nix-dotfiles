@@ -13,9 +13,11 @@
 			url = "github:nix-community/nixvim";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		catppuccin.url = "github:catppuccin/nix";
 	};
 
-	outputs = { self, nixpkgs, home-manager, nixvim, ... }@inputs:
+	outputs = { self, nixpkgs, home-manager, nixvim, catppuccin, ... }@inputs:
 
 		let
 			system = "x86_64-linux";
@@ -31,6 +33,7 @@
 			modules = [
 				./home-manager/home_dps.nix
 				nixvim.homeManagerModules.nixvim
+				catppuccin.homeManagerModules.catppuccin
 			];
 		};
 
@@ -39,6 +42,7 @@
 			modules = [
 				./home-manager/home_paissilva.nix
 				nixvim.homeManagerModules.nixvim
+				catppuccin.homeManagerModules.catppuccin
 			];
 		};
 	};

@@ -8,7 +8,7 @@ set $term kitty
 # Application launcher
 set $menu swaymsg exec $path/fuzzel
 # Lock screen
-set $lock swaylock -f -c 000000 -i ~/.config/sway/wallpaper.png
+set $lock 'swaylock -f -c 000000 -i ~/.config/sway/wallpaper.png'
 
 include /etc/sway/config-vars.d/*
 

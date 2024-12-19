@@ -1,5 +1,20 @@
 {
   "nodes": {
+    "catppuccin": {
+      "locked": {
+        "lastModified": 1734606175,
+        "narHash": "sha256-1j7XrbwvwH7/tJ+m+LJiSjAdxBgT+hDLPnS716NfXcg=",
+        "owner": "catppuccin",
+        "repo": "nix",
+        "rev": "63b711e67687bb206b4e051a14f1c67e66b1a105",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
     "devshell": {
       "inputs": {
         "nixpkgs": [
@@ -286,6 +301,7 @@
     },
     "root": {
       "inputs": {
+        "catppuccin": "catppuccin",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim"
