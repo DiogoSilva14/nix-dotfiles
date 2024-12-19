@@ -24,6 +24,10 @@ exec swayidle -w \
 ### Input configuration
 input * xkb_layout "pt"
 
+input type:touchpad {
+	natural_scroll enabled
+}
+
 ### Key bindings
 #
 # Basics:
