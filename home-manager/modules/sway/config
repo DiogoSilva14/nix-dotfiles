@@ -19,6 +19,7 @@ output * bg ~/.config/sway/wallpaper.png fill
 exec swayidle -w \
 	timeout 300 $lock \
 	timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+	timeout 900 '[[ $(cat /sys/class/power_supply/AC*/online 2>/dev/null) -eq 0 ]] && systemctl suspend' \
 	before-sleep $lock
 
 ### Input configuration
