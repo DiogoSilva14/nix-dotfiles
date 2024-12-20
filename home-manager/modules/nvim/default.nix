@@ -22,6 +22,8 @@
 
 		# Highlight white characters
 		extraConfigLua = ''
+			vim.opt.undofile = true
+
 			vim.opt.list = true
 			vim.opt.listchars = {
 				eol = "↓",
