@@ -6,7 +6,7 @@ programs.waybar = {
 	style = ''
 		${builtins.readFile "${pkgs.waybar}/etc/xdg/waybar/style.css"}
 		* {
-			font-family: "Ubuntu Mono", "Font Awesome 6 Free Solid";
+			font-family: "DejaVu Sans Mono", "Font Awesome 6 Free Solid";
 		}
 
 		window#waybar {
