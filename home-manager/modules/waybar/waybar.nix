@@ -5,26 +5,8 @@ programs.waybar = {
 	systemd.enable = true;
 	style = ''
 		${builtins.readFile "${pkgs.waybar}/etc/xdg/waybar/style.css"}
-		* {
-			font-family: "DejaVu Sans Mono", "Font Awesome 6 Free Solid";
-		}
-
-		window#waybar {
-			background: rgba(17, 17, 17, 0.7);
-			border-bottom: none;
-		}
-
-		.modules-right {
-			opacity: 0.9;
-			margin-left: 10px;
-			padding: 0px 0px 0px 5px;
-		}
-
-		#custom-waybar-mpris {
-			background: rgba(255, 255, 255, 0.5);
-		}
+		${builtins.readFile ./style.css}
 	'';
-
 	settings = [{
 		height = 30;
 		layer = "top";
@@ -44,11 +26,11 @@ programs.waybar = {
 			"tray"
 		];
 		battery = {
-			format = "{capacity}% {icon}";
-			format-alt = "{time} {icon}";
-			format-charging = "{capacity}% ";
+			format = "{icon}  {capacity}%";
+			format-alt = "{icon}  {time}";
+			format-charging = "  {capacity}%";
 			format-icons = [ "" "" "" "" "" ];
-			format-plugged = "{capacity}% ";
+			format-plugged = "  {capacity}%";
 			states = {
 				critical = 15;
 				warning = 30;
@@ -59,22 +41,22 @@ programs.waybar = {
 			tooltip-format = "{:%d-%m-%Y | %H:%M}";
 		};
 		cpu = {
-			format = "{usage}% ";
+			format = "  {usage}%";
 			tooltip = false;
 		};
-		memory = { format = "{used}GiB "; };
+		memory = { format = "  {used}GiB"; };
 		network = {
 			interval = 1;
 			format-alt = "{ifname}: {ipaddr}/{cidr}";
-			format-disconnected = "Disconnected ⚠";
-			format-ethernet = "{ifname}: {ipaddr}/{cidr}   up: {bandwidthUpBits} down: {bandwidthDownBits}";
-			format-linked = "{ifname} (No IP) ";
-			format-wifi = "{essid} ({signalStrength}%) ";
+			format-disconnected = "⚠  Disconnected";
+			format-ethernet = "  {ifname}: {ipaddr}/{cidr} up: {bandwidthUpBits} down: {bandwidthDownBits}";
+			format-linked = "  {ifname} (No IP)";
+			format-wifi = "   {essid} ({signalStrength}%)";
 		};
 		pulseaudio = {
-			format = "{volume}% {icon} {format_source}";
-			format-bluetooth = "{volume}% {icon} {format_source}";
-			format-bluetooth-muted = " {icon} {format_source}";
+			format = "{icon} {volume}% {format_source}";
+			format-bluetooth = "{icon} {volume}% {format_source}";
+			format-bluetooth-muted = "{icon}  {format_source}";
 			format-icons = {
 				car = "";
 				default = [ "" "" "" ];
@@ -85,7 +67,7 @@ programs.waybar = {
 				portable = "";
 			};
 			format-muted = " {format_source}";
-			format-source = "{volume}% ";
+			format-source = " {volume}%";
 			format-source-muted = "";
 			on-click = "pavucontrol";
 		};
@@ -101,8 +83,7 @@ programs.waybar = {
 		temperature = {
 			thermal-zone = 4;
 			critical-threshold = 80;
-			format = "{temperatureC}°C";
-			format-icons = [ "" "" "" ];
+			format = " {temperatureC}°C";
 		};
 	}];
 };

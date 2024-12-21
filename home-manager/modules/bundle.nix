@@ -8,7 +8,7 @@
 		./nvim/default.nix
 		./sway/sway.nix
 		./packages.nix
-		./waybar.nix
+		./waybar/waybar.nix
 		./fuzzel.nix
 		./tmux.nix
 		./zsh.nix
