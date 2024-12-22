@@ -10,6 +10,7 @@
 	networking.hostName = "nixos"; # Define hostname
 
 	security.polkit.enable = true;
+	services.gnome.gnome-keyring.enable = true;
 
 	nix.gc = {
 		automatic = true;

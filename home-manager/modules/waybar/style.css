@@ -58,6 +58,7 @@ window#waybar {
 #battery,
 #battery.charging,
 #battery.plugged,
+#custom-tdp,
 #clock,
 #tray {
 	background: #292828;

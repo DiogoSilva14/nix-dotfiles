@@ -21,6 +21,7 @@ programs.waybar = {
 			"memory"
 			"temperature"
 			"battery"
+			"custom/tdp"
 			"clock"
 			"tray"
 		];
@@ -39,6 +40,12 @@ programs.waybar = {
 				critical = 15;
 				warning = 30;
 			};
+		};
+		"custom/tdp" = {
+			interval = 10;
+			tooltip = false;
+			format = "{}";
+			exec = ''/run/current-system/sw/bin/awk '{print "  " $1*10^-6 " W  "}' /sys/class/power_supply/BAT0/power_now'';
 		};
 		clock = {
 			tooltip = false;
@@ -65,7 +72,7 @@ programs.waybar = {
 		pulseaudio = {
 			format = "{volume}% {icon} {format_source}";
 			format-bluetooth = "{volume}% {icon} {format_source}";
-			format-bluetooth-muted = "{icon}  {format_source}";
+			format-bluetooth-muted = " {icon} {format_source}";
 			format-icons = {
 				car = "";
 				default = [ "" "" "" ];
@@ -75,7 +82,7 @@ programs.waybar = {
 				phone = "";
 				portable = "";
 			};
-			format-muted = " {format_source}";
+			format-muted = " {format_source}";
 			format-source = "{volume}% ";
 			format-source-muted = "";
 			on-click = "~/.nix-profile/bin/pavucontrol";
