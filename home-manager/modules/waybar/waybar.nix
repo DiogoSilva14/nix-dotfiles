@@ -75,7 +75,7 @@ programs.waybar = {
 				phone = "";
 				portable = "";
 			};
-			format-muted = "{format_source} ";
+			format-muted = " {format_source}";
 			format-source = "{volume}% ";
 			format-source-muted = "";
 			on-click = "~/.nix-profile/bin/pavucontrol";
