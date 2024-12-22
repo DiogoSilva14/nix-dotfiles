@@ -12,10 +12,9 @@ programs.waybar = {
 		layer = "top";
 		position = "top";
 		tray = { spacing = 10; };
-		modules-center = [ "sway/window" ];
-		modules-left = [ "sway/workspaces" "sway/mode" ];
+		modules-center = [ "custom/waybar-mpris" ];
+		modules-left = [ "custom/logo" "sway/workspaces" "sway/mode" "sway/window" ];
 		modules-right = [
-			"custom/waybar-mpris"
 			"pulseaudio"
 			"network"
 			"cpu"
@@ -25,37 +24,47 @@ programs.waybar = {
 			"clock"
 			"tray"
 		];
+		"custom/logo" = {
+			tooltip = false;
+			format = "";
+		};
 		battery = {
-			format = "{icon}  {capacity}%";
-			format-alt = "{icon}  {time}";
-			format-charging = "  {capacity}%";
+			tooltip = false;
+			format = "{capacity}% {icon}";
+			format-alt = "{time} {icon}";
+			format-charging = "{capacity}% ";
 			format-icons = [ "" "" "" "" "" ];
-			format-plugged = "  {capacity}%";
+			format-plugged = "{capacity}% ";
 			states = {
 				critical = 15;
 				warning = 30;
 			};
 		};
 		clock = {
+			tooltip = false;
 			format-alt = "{:%d-%m-%Y}";
 			tooltip-format = "{:%d-%m-%Y | %H:%M}";
 		};
 		cpu = {
-			format = "  {usage}%";
 			tooltip = false;
+			format = "{usage}% ";
 		};
-		memory = { format = "  {used}GiB"; };
+		memory = { 
+			tooltip = false;
+			format = "{used}GiB ";
+		};
 		network = {
+			tooltip = false;
 			interval = 1;
 			format-alt = "{ifname}: {ipaddr}/{cidr}";
-			format-disconnected = "⚠  Disconnected";
-			format-ethernet = "  {ifname}: {ipaddr}/{cidr} up: {bandwidthUpBits} down: {bandwidthDownBits}";
-			format-linked = "  {ifname} (No IP)";
-			format-wifi = "   {essid} ({signalStrength}%)";
+			format-disconnected = "Disconnected ⚠";
+			format-ethernet = "{ifname}: {ipaddr}/{cidr}     up: {bandwidthUpBits} down: {bandwidthDownBits}";
+			format-linked = "{ifname} (No IP) ";
+			format-wifi = "{essid} ({signalStrength}%) ";
 		};
 		pulseaudio = {
-			format = "{icon} {volume}% {format_source}";
-			format-bluetooth = "{icon} {volume}% {format_source}";
+			format = "{volume}% {icon} {format_source}";
+			format-bluetooth = "{volume}% {icon} {format_source}";
 			format-bluetooth-muted = "{icon}  {format_source}";
 			format-icons = {
 				car = "";
@@ -66,15 +75,15 @@ programs.waybar = {
 				phone = "";
 				portable = "";
 			};
-			format-muted = " {format_source}";
-			format-source = " {volume}%";
+			format-muted = "{format_source} ";
+			format-source = "{volume}% ";
 			format-source-muted = "";
-			on-click = "pavucontrol";
+			on-click = "~/.nix-profile/bin/pavucontrol";
 		};
 		"sway/mode" = { format = ''<span style="italic">{}</span>''; };
 		"custom/waybar-mpris"= {
 			return-type = "json";
-			exec = "~/.nix-profile/bin/waybar-mpris --position --autofocus";
+			exec = "~/.nix-profile/bin/waybar-mpris --position --autofocus --pause ''";
 			on-click = "~/.nix-profile/bin/waybar-mpris --send toggle";
 			on-scroll-up = "~/.nix-profile/bin/waybar-mpris --send next";
 			on-scroll-down = "~/.nix-profile/bin/waybar-mpris --send prev";
@@ -83,7 +92,7 @@ programs.waybar = {
 		temperature = {
 			thermal-zone = 4;
 			critical-threshold = 80;
-			format = " {temperatureC}°C";
+			format = "{temperatureC}°C ";
 		};
 	}];
 };

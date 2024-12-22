@@ -177,4 +177,9 @@ exec systemctl --user start waybar
 exec systemctl --user start blueman-applet
 exec systemctl --user start xdg-desktop-portal-gtk
 
+default_border pixel 2
+
+client.focused #FFFFFF80 #FFFFFF80 #FFFFFF80
+client.focused_inactive #FFFFFF80 #FFFFFF80 #FFFFFF80
+
 include /etc/sway/config.d/*
