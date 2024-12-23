@@ -4,5 +4,6 @@
 		neofetch
 		networkmanagerapplet
 		nemo
+		python3
 	];
 }

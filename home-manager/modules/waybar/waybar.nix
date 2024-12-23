@@ -42,7 +42,7 @@ programs.waybar = {
 			};
 		};
 		"custom/tdp" = {
-			interval = 10;
+			interval = 2;
 			tooltip = false;
 			format = "{}";
 			exec = ''/run/current-system/sw/bin/awk '{print "  " $1*10^-6 " W  "}' /sys/class/power_supply/BAT0/power_now'';

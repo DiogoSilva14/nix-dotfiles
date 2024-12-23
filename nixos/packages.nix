@@ -23,6 +23,7 @@
 		spice
 		win-spice
 		spice-gtk
+		libreoffice
 	];
 
 	virtualisation.spiceUSBRedirection.enable = true;
