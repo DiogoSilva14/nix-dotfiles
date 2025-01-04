@@ -101,7 +101,7 @@ in {
 			keybindings = lib.mkOptionDefault {
 					"${mod}+x" = "kill";
 
-					"${mod}+Space" = "${pkgs.fuzzel}/bin/fuzzel";
+					"${mod}+space" = "exec ${pkgs.fuzzel}/bin/fuzzel";
 
 					"${mod}+l" = "exec ${pkgs.swaylock}/bin/swaylock -f -c 000000 -i ${./linux_terminal_wallpaper.png}";
 					"${mod}+Shift+l" = "exec systemctl suspend";
@@ -119,10 +119,10 @@ in {
 			};
 
 			startup = [
-				{ command = "exec sleep 5; exec systemctl --user restart blueman-applet"; }
-				{ command = "exec sleep 5; exec systemctl --user restart xdg-desktop-portal-gtk"; }
-				{ command = "exec sleep 5; exec systemctl --user restart kanshi"; }
-				{ command = "exec sleep 5; exec systemctl --user restart ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"; }
+				{ command = "exec sleep 1; exec systemctl --user start xdg-desktop-portal-gtk"; }
+				{ command = "exec sleep 5; nm-applet --indicator"; }
+				{ command = "exec sleep 5; blueman-applet"; }
+				{ command = "exec sleep 5; kanshi"; }
 			];
 		};
 
