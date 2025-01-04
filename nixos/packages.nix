@@ -19,20 +19,21 @@
 
 		# Other
 		home-manager
-		pavucontrol
-		spice
-		win-spice
-		spice-gtk
+#		spice
+#		win-spice
+#		spice-gtk
 		libreoffice
+		godot_4
+		qbittorrent
 	];
 
-	virtualisation.spiceUSBRedirection.enable = true;
-	services.spice-vdagentd.enable = true;
-	virtualisation.libvirtd.enable = true;
+#	virtualisation.spiceUSBRedirection.enable = true;
+#	services.spice-vdagentd.enable = true;
+#	virtualisation.libvirtd.enable = true;
 
 	programs = {
 		firefox.enable = true;
-		virt-manager.enable = true;
+#		virt-manager.enable = true;
 		sway.enable = true;
 		zsh.enable = true;
 	};
