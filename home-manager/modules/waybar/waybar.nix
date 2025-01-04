@@ -2,7 +2,6 @@
 {
 programs.waybar = {
 	enable = true;
-	systemd.enable = true;
 	style = ''
 		${builtins.readFile "${pkgs.waybar}/etc/xdg/waybar/style.css"}
 		${builtins.readFile ./style.css}
@@ -45,7 +44,7 @@ programs.waybar = {
 			interval = 2;
 			tooltip = false;
 			format = "{}";
-			exec = ''/run/current-system/sw/bin/awk '{print "  " $1*10^-6 " W  "}' /sys/class/power_supply/BAT0/power_now'';
+			exec = ''${pkgs.gawk}/bin/awk '{print "  " $1*10^-6 " W  "}' /sys/class/power_supply/BAT0/power_now'';
 		};
 		clock = {
 			tooltip = false;
@@ -85,15 +84,15 @@ programs.waybar = {
 			format-muted = " {format_source}";
 			format-source = "{volume}% ";
 			format-source-muted = "";
-			on-click = "~/.nix-profile/bin/pavucontrol";
+			on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
 		};
 		"sway/mode" = { format = ''<span style="italic">{}</span>''; };
 		"custom/waybar-mpris"= {
 			return-type = "json";
-			exec = "~/.nix-profile/bin/waybar-mpris --position --autofocus --pause ''";
-			on-click = "~/.nix-profile/bin/waybar-mpris --send toggle";
-			on-scroll-up = "~/.nix-profile/bin/waybar-mpris --send next";
-			on-scroll-down = "~/.nix-profile/bin/waybar-mpris --send prev";
+			exec = "${pkgs.waybar-mpris}/bin/waybar-mpris --position --autofocus --pause ''";
+			on-click = "${pkgs.waybar-mpris}/bin/waybar-mpris --send toggle";
+			on-scroll-up = "${pkgs.waybar-mpris}/bin/waybar-mpris --send next";
+			on-scroll-down = "${pkgs.waybar-mpris}/bin/waybar-mpris --send prev";
 			escape = true;
 		};
 		temperature = {
@@ -106,5 +105,6 @@ programs.waybar = {
 	
 home.packages = [
 	pkgs.waybar-mpris
+	pkgs.gawk
 ];
 }

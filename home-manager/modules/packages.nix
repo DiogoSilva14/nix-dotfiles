@@ -5,5 +5,6 @@
 		networkmanagerapplet
 		nemo
 		python3
+		pavucontrol
 	];
 }
