@@ -51,8 +51,8 @@ in {
 			};
 
 			bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
-			menu = "${pkgs.fuzzel}/bin/fuzzel";
-			terminal = "${pkgs.kitty}/bin/kitty";
+			menu = "fuzzel";
+			terminal = "kitty";
 
 			window = {
 				titlebar = false;
@@ -103,8 +103,10 @@ in {
 
 					"${mod}+space" = "exec ${pkgs.fuzzel}/bin/fuzzel";
 
-					"${mod}+l" = "exec ${pkgs.swaylock}/bin/swaylock -f -c 000000 -i ${./linux_terminal_wallpaper.png}";
+					"${mod}+l" = "exec swaylock -f -c 000000 -i ${./linux_terminal_wallpaper.png}";
 					"${mod}+Shift+l" = "exec systemctl suspend";
+
+					"${mod}+t" = "exec kitty";
 
 					"XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
 					"XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
