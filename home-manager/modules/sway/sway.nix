@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 let 
 	mod = "Mod4";
-	lock = "${pkgs.swaylock}/bin/swaylock -f -c 000000 -i ${./linux_terminal_wallpaper.png}";
+	lock = "swaylock -f -c 000000 -i ${./linux_terminal_wallpaper.png}";
 in {
 	services.kanshi = {
 		enable = true;
