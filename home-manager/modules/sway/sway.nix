@@ -119,10 +119,10 @@ in {
 			};
 
 			startup = [
-				{ command = "exec sleep 1; exec systemctl --user start xdg-desktop-portal-gtk"; }
-				{ command = "exec sleep 5; nm-applet --indicator"; }
-				{ command = "exec sleep 5; blueman-applet"; }
-				{ command = "exec sleep 5; kanshi"; }
+				{ command = "systemctl --user start xdg-desktop-portal-gtk"; }
+				{ command = "systemctl --user restart kanshi"; }
+				{ command = "systemctl --user restart blueman-applet"; }
+				{ command = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"; }
 			];
 		};
 
