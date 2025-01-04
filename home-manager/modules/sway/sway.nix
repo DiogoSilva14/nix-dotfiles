@@ -1,6 +1,7 @@
 { pkgs, lib, ... }:
 let 
 	mod = "Mod4";
+	lock = "exec swaylock -f -c 000000 -i ${./linux_terminal_wallpaper.png}";
 in {
 	services.kanshi = {
 		enable = true;
@@ -103,7 +104,7 @@ in {
 
 					"${mod}+space" = "exec ${pkgs.fuzzel}/bin/fuzzel";
 
-					"${mod}+l" = "exec swaylock -f -c 000000 -i ${./linux_terminal_wallpaper.png}";
+					"${mod}+l" = "${lock}";
 					"${mod}+Shift+l" = "exec systemctl suspend";
 
 					"${mod}+t" = "exec kitty";
@@ -122,9 +123,15 @@ in {
 
 			startup = [
 				{ command = "systemctl --user start xdg-desktop-portal-gtk"; }
-				{ command = "systemctl --user restart kanshi"; }
+				{ command = "systemctl --user restart kanshi"; always = true; }
 				{ command = "systemctl --user restart blueman-applet"; }
 				{ command = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"; }
+				{ command = ''swayidle -w \
+						timeout 300 ${lock} \
+						timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+						timeout 900 '[[ $(cat /sys/class/power_supply/AC*/online 2>/dev/null) -eq 0 ]] && systemctl suspend' \
+						before-sleep ${lock}
+				''; }
 			];
 		};
 
