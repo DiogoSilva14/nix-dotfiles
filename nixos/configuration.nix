@@ -19,5 +19,11 @@
 		options = "--delete-older-than 14d";
 	};
 
+	services.openvpn.servers.nordvpn = {
+		autoStart = true;
+		config = "config /home/dps/.nordvpn";
+		updateResolvConf = true;
+	};
+
 	system.stateVersion = "24.11"; # State version. Not sure if needed with flakes :/
 }

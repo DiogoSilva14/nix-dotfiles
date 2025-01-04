@@ -19,21 +19,13 @@
 
 		# Other
 		home-manager
-#		spice
-#		win-spice
-#		spice-gtk
 		libreoffice
 		godot_4
 		qbittorrent
 	];
 
-#	virtualisation.spiceUSBRedirection.enable = true;
-#	services.spice-vdagentd.enable = true;
-#	virtualisation.libvirtd.enable = true;
-
 	programs = {
 		firefox.enable = true;
-#		virt-manager.enable = true;
 		sway.enable = true;
 		zsh.enable = true;
 	};
