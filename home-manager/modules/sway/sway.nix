@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 let 
 	mod = "Mod4";
-	lock = "exec swaylock -f -c 000000 -i ${./linux_terminal_wallpaper.png}";
+	lock = "${pkgs.swaylock}/bin/swaylock -f -c 000000 -i ${./linux_terminal_wallpaper.png}";
 in {
 	services.kanshi = {
 		enable = true;
@@ -31,6 +31,26 @@ in {
 					"${pkgs.sway}/bin/swaymsg workspace 9, move workspace to eDP-1"	
 				];
 			}
+		];
+	};
+
+	services.swayidle = {
+		enable = true;
+		timeouts = [
+			{
+				timeout = 300;
+				command = "${lock}";
+			}
+		];
+		events = [
+			{
+				event = "before-sleep";
+				command = "${lock}";
+			}
+			{
+				event = "lock";
+				command = "${lock}";
+			}	
 		];
 	};
 
@@ -104,10 +124,8 @@ in {
 
 					"${mod}+space" = "exec ${pkgs.fuzzel}/bin/fuzzel";
 
-					"${mod}+l" = "${lock}";
+					"${mod}+l" = "exec ${lock}";
 					"${mod}+Shift+l" = "exec systemctl suspend";
-
-					"${mod}+t" = "exec kitty";
 
 					"XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
 					"XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
@@ -124,14 +142,9 @@ in {
 			startup = [
 				{ command = "systemctl --user start xdg-desktop-portal-gtk"; }
 				{ command = "systemctl --user restart kanshi"; always = true; }
-				{ command = "systemctl --user restart blueman-applet"; }
+				{ command = "systemctl --user start blueman-applet"; }
+				{ command = "systemctl --user start swayidle"; }
 				{ command = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"; }
-				{ command = ''swayidle -w \
-						timeout 300 ${lock} \
-						timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-						timeout 900 '[[ $(cat /sys/class/power_supply/AC*/online 2>/dev/null) -eq 0 ]] && systemctl suspend' \
-						before-sleep ${lock}
-				''; }
 			];
 		};
 

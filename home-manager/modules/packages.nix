@@ -7,5 +7,6 @@
 		nemo
 		python3
 		pavucontrol
+		swaylock
 	];
 }
