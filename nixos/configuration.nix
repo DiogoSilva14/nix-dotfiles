@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
 	imports = [
 		./hardware-configuration.nix
@@ -30,7 +31,7 @@
 		settings = {
 			default_session = {
 				command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
-				user = "dps";
+				user = "greeter";
 			};
 		};
 	};
