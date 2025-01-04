@@ -101,7 +101,7 @@ in {
 			keybindings = lib.mkOptionDefault {
 					"${mod}+x" = "kill";
 
-					"${mod}+Space" = "${pkgs.fuzzel}/bin/fuzzel"
+					"${mod}+Space" = "${pkgs.fuzzel}/bin/fuzzel";
 
 					"${mod}+l" = "exec ${pkgs.swaylock}/bin/swaylock -f -c 000000 -i ${./linux_terminal_wallpaper.png}";
 					"${mod}+Shift+l" = "exec systemctl suspend";
