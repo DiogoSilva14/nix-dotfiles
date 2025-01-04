@@ -25,5 +25,15 @@
 		updateResolvConf = true;
 	};
 
+	services.greetd = {
+		enable = true;
+		settings = {
+			default_session = {
+				command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+				user = "dps";
+			};
+		};
+	};
+
 	system.stateVersion = "24.11"; # State version. Not sure if needed with flakes :/
 }
