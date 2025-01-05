@@ -45,13 +45,13 @@ programs.waybar = {
 			interval = 2;
 			tooltip = false;
 			format = "{}";
-			exec = ''${pkgs.gawk}/bin/awk '{print "  " $1*10^-6 " W  "}' /sys/class/power_supply/BAT0/current_now * /sys/class/power_supply/BAT0/voltage_now'';
+			exec = ''${pkgs.gawk}/bin/awk -v current=$(cat /sys/class/power_supply/BAT0/current_now) -v voltage=$(cat /sys/class/power_supply/BAT0/voltage_now) 'BEGIN { printf "  %.1f W  ", current * voltage * 10^-12 }' '';
 		};
 		"custom/tdp2" = {
 			interval = 2;
 			tooltip = false;
 			format = "{}";
-			exec = ''${pkgs.gawk}/bin/awk '{print "  " $1*10^-6 " W  "}' /sys/class/power_supply/BAT0/power_now'';
+			exec = ''${pkgs.gawk}/bin/awk '{printf "  %.1f W  ", $1*10^-6 }' /sys/class/power_supply/BAT0/power_now'';
 		};
 		clock = {
 			tooltip = false;
