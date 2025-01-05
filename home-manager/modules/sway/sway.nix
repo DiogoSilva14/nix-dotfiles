@@ -34,26 +34,6 @@ in {
 		];
 	};
 
-	services.swayidle = {
-		enable = true;
-		timeouts = [
-			{
-				timeout = 300;
-				command = "${lock}";
-			}
-		];
-		events = [
-			{
-				event = "before-sleep";
-				command = "${lock}";
-			}
-			{
-				event = "lock";
-				command = "${lock}";
-			}	
-		];
-	};
-
 	wayland.windowManager.sway = {
 		enable = true;
 		config = {
@@ -145,6 +125,12 @@ in {
 				{ command = "systemctl --user start blueman-applet"; }
 				{ command = "systemctl --user start swayidle"; }
 				{ command = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"; }
+				{ command = ''swayidle -w \
+						timeout 540 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+						timeout 600 '${lock}' \
+						timeout 900 '[[ $(cat /sys/class/power_supply/AC*/online 2>/dev/null) -eq 0 ]] && systemctl suspend' \
+						before-sleep '${lock}'
+				''; }
 			];
 		};
 
