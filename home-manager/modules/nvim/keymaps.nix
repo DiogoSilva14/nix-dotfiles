@@ -20,6 +20,12 @@
 			key = "K";
 			action = ":m '<-2<CR>gv=gv";
 		}
+# Harpoon
+#		{
+#			mode = "n";
+#			key = "<C-h>";
+#			action = ":lua require('harpoon.ui').toggle_quick_menu()<CR>";
+#		}
 	];
 
 }
