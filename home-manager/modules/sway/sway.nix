@@ -107,6 +107,11 @@ in {
 					"${mod}+l" = "exec ${lock}";
 					"${mod}+Shift+l" = "exec systemctl suspend";
 
+					"${mod}+Control+Shift+Right" = "move workspace to output right";
+					"${mod}+Control+Shift+Left" = "move workspace to output left";
+					"${mod}+Control+Shift+Down" = "move workspace to output down";
+					"${mod}+Control+Shift+Up" = "move workspace to output up";
+
 					"XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
 					"XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
 					"XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
