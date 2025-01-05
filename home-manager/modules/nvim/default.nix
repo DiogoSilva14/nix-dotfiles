@@ -22,6 +22,8 @@
 
 		# Highlight white characters
 		extraConfigLua = ''
+			vim.opt.nu = true
+
 			vim.opt.undofile = true
 
 			vim.opt.list = true
