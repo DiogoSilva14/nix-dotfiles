@@ -21,6 +21,7 @@ programs.waybar = {
 			"temperature"
 			"battery"
 			"custom/tdp"
+			"custom/tdp2"
 			"clock"
 			"tray"
 		];
@@ -41,6 +42,12 @@ programs.waybar = {
 			};
 		};
 		"custom/tdp" = {
+			interval = 2;
+			tooltip = false;
+			format = "{}";
+			exec = ''${pkgs.gawk}/bin/awk '{print "  " $1*10^-6 " W  "}' /sys/class/power_supply/BAT0/current_now * /sys/class/power_supply/BAT0/voltage_now'';
+		};
+		"custom/tdp2" = {
 			interval = 2;
 			tooltip = false;
 			format = "{}";
