@@ -5,8 +5,15 @@
 		networkmanagerapplet
 		blueman
 		nemo
-		python3
 		pavucontrol
 		swaylock
+		
+		(pkgs.python311.withPackages (ppkgs: [
+			ppkgs.ollama
+		]))
+
+		slurp
+		grim
+		imagemagick
 	];
 }

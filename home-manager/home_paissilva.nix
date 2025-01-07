@@ -2,6 +2,7 @@
 {
 	imports = [
 		./modules/bundle.nix
+		./work/macros.nix
 	];
 
 	home = {
