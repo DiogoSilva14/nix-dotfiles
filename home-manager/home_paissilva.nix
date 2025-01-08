@@ -3,6 +3,7 @@
 	imports = [
 		./modules/bundle.nix
 		./work/macros.nix
+		./work/mounts.nix
 	];
 
 	home = {

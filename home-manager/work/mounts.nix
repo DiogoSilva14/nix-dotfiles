@@ -1,15 +1,26 @@
 {
 	systemd.user = {
 		mounts = {
-			mount-test = {
+			home-paissilva-mounts-builder3_data = {
 				Unit = {
-					Description = "mount test home";
+					Description = "Mount builder data";
 				};
 				Mount = {
-					What="paissilva@builder3:~/";
-					Where="~/mounts/builder3-home";
+					What="paissilva@builder3:/data/paissilva";
+					Where="/home/paissilva/mounts/builder3_data";
 					Type="sshfs";
-					Options="x-systemd.automount,_netdev,reconnect,allow_other,identityfile=~/.ssh/id_rsa";
+					Options="x-systemd.automount,reconnect";
+				};
+			};
+			home-paissilva-mounts-projectpc_home = {
+				Unit = {
+					Description = "Mount ProjectPc home";
+				};
+				Mount = {
+					What="dps@projectpc:/home/dps";
+					Where="/home/paissilva/mounts/projectpc_home";
+					Type="sshfs";
+					Options="x-systemd.automount,reconnect";
 				};
 			};
 		};
