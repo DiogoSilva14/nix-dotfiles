@@ -4,16 +4,20 @@
 			"1" = "ssh paissilva@builder3";
 			"2" = "ssh dps@projectpc";
 			"3" = "ssh labgrid@projectpc";
-			"ph" = "cd $PH";
-			"bd" = "cd $BD";
-		};
-
-		sessionVariables = {
-			"PH" = "/home/paissilva/mounts/projectpc_home";
-			"BD" = "/home/paissilva/mounts/builder3_data";
+			"ph" = "cd $PROJECTPC_HOME";
+			"bd" = "cd $BUILDER3_DATA";
+			"yocto" = "cd $YOCTO_SOURCES";
+			"devtool_home" = "cd $DEVTOOL_SOURCES";
 		};
 
 		initExtra = ''
+			export PROJECTPC_HOME=/home/paissilva/mounts/projectpc_home
+			export BUILDER3_DATA=/home/paissilva/mounts/builder3_data
+			export FUSION_HOME=$BUILDER3_DATA/fusion
+			export YOCTO_HOME=$FUSION_HOME/yocto-fusion_scarthgap
+			export YOCTO_SOURCES=$YOCTO_HOME/sources
+			export DEVTOOL_SOURCES=$YOCTO_HOME/build/workspace/sources
+			
 			echo "==========================="
 			echo
 			fortune | cowsay
