@@ -3,10 +3,6 @@ let
 	mod = "Mod4";
 	lock = "swaylock -f -c 000000 -i ${./linux_terminal_wallpaper.png}";
 in {
-	home.packages = with pkgs; [
-		(writeShellScriptBin "sway-screenshot" (builtins.readFile ./sway-screenshot.sh))
-	];
-
 	services.kanshi = {
 		enable = true;
 		settings = [
@@ -116,7 +112,7 @@ in {
 					"${mod}+Control+Shift+Down" = "move workspace to output down";
 					"${mod}+Control+Shift+Up" = "move workspace to output up";
 
-					"Print" = "~/.nix-profile/bin/sway-screenshot --mode region --clipboard-only";
+					"Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy area";
 
 					"XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
 					"XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";

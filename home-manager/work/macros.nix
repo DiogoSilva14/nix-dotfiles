@@ -8,6 +8,7 @@
 			"bd" = "cd $BUILDER3_DATA";
 			"yocto" = "cd $YOCTO_SOURCES";
 			"devtool_home" = "cd $DEVTOOL_SOURCES";
+			"remount_sshfs" = "systemctl --user restart home-paissilva-mounts-builder3_data.mount && systemctl --user restart home-paissilva-mounts-projectpc_home.mount";
 		};
 
 		initExtra = ''

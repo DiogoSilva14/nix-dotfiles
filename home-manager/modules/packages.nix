@@ -14,6 +14,7 @@
 
 		slurp
 		grim
+		sway-contrib.grimshot
 		imagemagick
 	];
 }
