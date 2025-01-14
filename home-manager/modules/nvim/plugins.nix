@@ -43,5 +43,9 @@
 				"9" = "<leader>9";
 			};
 		};
+
+		# Markdown-preview
+		markdown-preview.enable = true;
+		markdown-preview.settings.auto_start = true;
 	};
 }
