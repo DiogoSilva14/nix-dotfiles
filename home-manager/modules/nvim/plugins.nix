@@ -46,6 +46,19 @@
 
 		# Markdown-preview
 		markdown-preview.enable = true;
-		markdown-preview.settings.auto_start = true;
+		markdown-preview.settings.auto_start = 1;
+
+		# LSP
+		lsp-format.enable = true;
+		lsp.enable = true;
+		lsp.inlayHints = true;
+		lsp.servers = {
+			rust_analyzer = {
+				enable = true;
+				installCargo = true;
+				installRustc = true;
+				installRustfmt = true;
+			};
+		};
 	};
 }
