@@ -57,6 +57,7 @@
 			deploy_vision3_qt () {
 				scp $VISION3_HOME/qt-hmi/build/libQtHMI.so root@10.100.30.130:/lib/qml/com/hmi/qmlcomponents/libQtHMI.so
 				scp $VISION3_HOME/qt5-examples/build/digital-camera/qt5-digital-camera root@10.100.30.130:~/
+				scp $VISION3_HOME/qt5-examples/build/camera/qt5-camera root@10.100.30.130:~/
 			}
 
 			echo "============================================"
