@@ -14,6 +14,8 @@
 	services.gnome.gnome-keyring.enable = true;
 	services.flatpak.enable = true;
 
+	boot.supportedFilesystems = [ "ntfs" ];
+
 	nix.gc = {
 		automatic = true;
 		dates = "weekly";
