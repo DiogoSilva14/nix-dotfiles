@@ -47,6 +47,38 @@
 		# Markdown render
 		render-markdown.enable = true;
 
+		# Neorg
+		neorg = {
+			enable = true;
+			lazyLoading = false;
+			modules = {
+				"core.defaults" = {};
+				"core.keybinds" = {};
+				"core.concealer" = {
+					config = {
+						icon_preset = "diamond";
+					};
+				};
+				"core.dirman" = {
+					config.workspaces = {
+						work = "~/notes/work";
+						home = "~/notes/home";
+					};
+				};
+				"core.completion" = {
+					config.engine = "nvim-cmp";
+				};
+			};
+		};
+		treesitter = {
+			enable = true;
+			grammarPackages = with pkgs.tree-sitter-grammars; [
+				tree-sitter-norg
+				tree-sitter-norg-meta
+			];
+		};
+		cmp.enable = true;
+
 		# LSP
 		lsp-format.enable = true;
 		lsp.enable = true;
@@ -57,6 +89,9 @@
 				installCargo = true;
 				installRustc = true;
 				installRustfmt = true;
+			};
+			pylsp = {
+				enable = true;
 			};
 		};
 	};
