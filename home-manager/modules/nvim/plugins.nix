@@ -47,6 +47,10 @@
 		# Markdown render
 		render-markdown.enable = true;
 
+		# Markdown preview
+		markdown-preview.enable = true;
+		markdown-preview.settings.auto_start = 1;
+
 		# Neorg
 		neorg = {
 			enable = true;
