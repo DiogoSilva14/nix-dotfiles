@@ -2,7 +2,7 @@
 	users.users.dps = {
 		isNormalUser = true;
 		description = "dps";
-		extraGroups = [ "networkmanager" "wheel" ];
+		extraGroups = [ "networkmanager" "wheel" "plugdev" "libvirtd" ];
 		shell = pkgs.zsh;
 	};
 }

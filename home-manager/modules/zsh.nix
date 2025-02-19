@@ -9,9 +9,11 @@
 		shellAliases =
 		let
 			flakeDir = "~/nix-dotfiles";
+			fhsDir = "${flakeDir}/home-manager/modules/fhs";
 		in {
 			rebuild = "sudo nixos-rebuild switch --flake ${flakeDir} && home-manager switch --flake ${flakeDir}";
 			hms = "nix run nixpkgs#home-manager -- switch --flake ${flakeDir}";
+			fhs = "nix develop ${fhsDir}";
 
 			fd = "cd ${flakeDir}";
 
