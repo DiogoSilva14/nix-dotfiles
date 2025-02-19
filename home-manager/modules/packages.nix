@@ -16,5 +16,6 @@
 		grim
 		sway-contrib.grimshot
 		imagemagick
+		fzf
 	];
 }

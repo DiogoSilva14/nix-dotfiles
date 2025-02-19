@@ -97,6 +97,9 @@
 			pylsp = {
 				enable = true;
 			};
+			marksman = {
+				enable = true;
+			};
 		};
 	};
 }

@@ -31,6 +31,28 @@ in {
 					"${pkgs.sway}/bin/swaymsg workspace 9, move workspace to eDP-1"	
 				];
 			}
+			{
+				profile.name = "docked_work";
+				profile.outputs = [
+				{
+					criteria = "eDP-1";
+					mode = "1920x1080";
+					position = "0,0";
+				}
+				{
+					criteria = "Goldstar Company Ltd 25BL55WY 109NTPC0W192";
+					mode = "1920x1200";
+					position = "1920,0";
+				}
+				{
+					criteria = "Goldstar Company Ltd 25BL55WY 109NTZN0W221";
+					mode = "1920x1200";
+					position = "3840,0";
+				}];
+				profile.exec = [
+					"${pkgs.sway}/bin/swaymsg workspace 9, move workspace to eDP-1"	
+				];
+			}
 		];
 	};
 

@@ -12,6 +12,7 @@
 			"devtool_home" = "cd $DEVTOOL_SOURCES";
 			"deploy_dir" = "cd $DEPLOY_DIR";
 			"remount_sshfs" = "systemctl --user restart home-paissilva-mounts-builder3_data.mount && systemctl --user restart home-paissilva-mounts-projectpc_home.mount";
+			"todo" = "mkdir -p ~/Documents/notes; vi ~/Documents/notes/todo.md";
 		};
 
 		initExtra = ''

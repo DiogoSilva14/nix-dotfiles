@@ -26,6 +26,7 @@
 			plugins = [
 				"git"
 				"sudo"
+				"fzf"
 			];
 			theme = "agnoster";
 		};
