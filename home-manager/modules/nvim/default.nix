@@ -35,6 +35,8 @@
 				precedes = "…",
 				space = "·"
 			}
+
+			vim.opt.colorcolumn = "80"
 		'';
 	};
 }
