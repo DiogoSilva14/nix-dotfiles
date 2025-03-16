@@ -62,7 +62,6 @@
 
 	services.xserver.videoDrivers = [
 		"i915"
-		"intel"
 	];
 	services.thermald.enable = true;
 }
