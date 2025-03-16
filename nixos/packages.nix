@@ -23,9 +23,9 @@
 		spice-gtk
 
 		# Other
+		distrobox
 		home-manager
 		libreoffice
-		godot_4
 		qbittorrent
 	];
 
