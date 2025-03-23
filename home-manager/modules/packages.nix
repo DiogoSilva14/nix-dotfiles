@@ -7,6 +7,7 @@
 		nemo
 		pavucontrol
 		swaylock
+		uv
 		
 		(pkgs.python311.withPackages (ppkgs: [
 			ppkgs.ollama
