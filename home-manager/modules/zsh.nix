@@ -13,7 +13,14 @@
 		in {
 			rebuild = "sudo nixos-rebuild switch --flake ${flakeDir} && home-manager switch --flake ${flakeDir}";
 			hms = "nix run nixpkgs#home-manager -- switch --flake ${flakeDir}";
-			nix-up = "nix flake update ${flakeDir}";
+			nix-up = "
+				cd ${flakeDir} &&
+				nix flake update &&
+				git add flake.lock &&
+				git commit -m \"Update\" &&
+				git push;
+				cd -
+			";
 			fhs = "nix develop ${fhsDir}";
 
 			fd = "cd ${flakeDir}";
@@ -33,7 +40,6 @@
 				"git"
 				"sudo"
 				"fzf"
-				"chucknorris"
 			];
 			theme = "agnoster";
 		};
