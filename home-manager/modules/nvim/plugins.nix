@@ -96,6 +96,11 @@
 			};
 			pylsp = {
 				enable = true;
+				settings = {
+					plugins = {
+						ruff.enabled = true;
+					};
+				};
 			};
 			marksman = {
 				enable = true;
