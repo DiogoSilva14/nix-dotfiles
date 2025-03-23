@@ -85,6 +85,8 @@ programs.waybar = {
 			on-click = "${pkgs.waybar-mpris}/bin/waybar-mpris --send toggle";
 			on-scroll-up = "${pkgs.waybar-mpris}/bin/waybar-mpris --send next";
 			on-scroll-down = "${pkgs.waybar-mpris}/bin/waybar-mpris --send prev";
+			album-len = 0;
+			max-length = 60;
 			escape = true;
 		};
 	}];
