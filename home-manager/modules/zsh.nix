@@ -20,7 +20,7 @@
 			v = "nvim";
 
 			# Tired of 'xterm-kitty': unknown terminal type
-			ssh = "export TERM=tmux; ssh"
+			ssh = "export TERM=tmux; ssh";
 		};
 
 		history.size = 10000;

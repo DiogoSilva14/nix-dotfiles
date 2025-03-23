@@ -134,7 +134,7 @@ in {
 					"${mod}+Control+Shift+Down" = "move workspace to output down";
 					"${mod}+Control+Shift+Up" = "move workspace to output up";
 
-					"Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy area";
+					"Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot savecopy area";
 
 					"XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
 					"XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
@@ -149,11 +149,11 @@ in {
 			};
 
 			startup = [
-				{ command = "systemctl --user start xdg-desktop-portal-gtk"; }
+				{ command = "systemctl --user restart xdg-desktop-portal-gtk"; }
 				{ command = "systemctl --user restart kanshi"; always = true; }
-				{ command = "systemctl --user start blueman-applet"; }
-				{ command = "systemctl --user start swayidle"; }
-				{ command = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"; }
+				{ command = "systemctl --user restart blueman-applet"; always = true; }
+				{ command = "systemctl --user restart swayidle"; always = true; }
+				{ command = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"; always = true; }
 				{ command = ''swayidle -w \
 						timeout 540 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
 						timeout 600 '${lock}' \
