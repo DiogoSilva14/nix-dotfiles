@@ -18,10 +18,7 @@ programs.waybar = {
 			"network"
 			"cpu"
 			"memory"
-			"temperature"
 			"battery"
-			"custom/tdp"
-			"custom/tdp2"
 			"clock"
 			"tray"
 		];
@@ -40,18 +37,6 @@ programs.waybar = {
 				critical = 15;
 				warning = 30;
 			};
-		};
-		"custom/tdp" = {
-			interval = 2;
-			tooltip = false;
-			format = "{}";
-			exec = ''test -f /sys/class/power_supply/BAT0/current_now && ${pkgs.gawk}/bin/awk -v current=$(cat /sys/class/power_supply/BAT0/current_now) -v voltage=$(cat /sys/class/power_supply/BAT0/voltage_now) 'BEGIN { printf "  %.1f W  ", current * voltage * 10^-12 }' '';
-		};
-		"custom/tdp2" = {
-			interval = 2;
-			tooltip = false;
-			format = "{}";
-			exec = ''test -f /sys/class/power_supply/BAT0/power_now && ${pkgs.gawk}/bin/awk '{printf "  %.1f W  ", $1*10^-6 }' /sys/class/power_supply/BAT0/power_now'';
 		};
 		clock = {
 			tooltip = false;
@@ -101,11 +86,6 @@ programs.waybar = {
 			on-scroll-up = "${pkgs.waybar-mpris}/bin/waybar-mpris --send next";
 			on-scroll-down = "${pkgs.waybar-mpris}/bin/waybar-mpris --send prev";
 			escape = true;
-		};
-		temperature = {
-			thermal-zone = 4;
-			critical-threshold = 80;
-			format = "{temperatureC}°C ";
 		};
 	}];
 };
