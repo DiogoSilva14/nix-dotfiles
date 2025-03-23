@@ -13,6 +13,7 @@
 		in {
 			rebuild = "sudo nixos-rebuild switch --flake ${flakeDir} && home-manager switch --flake ${flakeDir}";
 			hms = "nix run nixpkgs#home-manager -- switch --flake ${flakeDir}";
+			nix-up = "nix flake update ${flakeDir}";
 			fhs = "nix develop ${fhsDir}";
 
 			fd = "cd ${flakeDir}";
