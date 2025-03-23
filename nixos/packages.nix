@@ -22,16 +22,30 @@
 		win-spice
 		spice-gtk
 
-		# Other
+		# Dev
 		distrobox
+		dive
+		podman-tui
+		podman-compose
+
+		# Other
 		home-manager
 		libreoffice
 		qbittorrent
 	];
 
-	virtualisation.spiceUSBRedirection.enable = true;
 	services.spice-vdagentd.enable = true;
-	virtualisation.libvirtd.enable = true;
+	
+	virtualisation = {
+		libvirtd.enable = true;
+		spiceUSBRedirection.enable = true;
+
+		podman = {
+			enable = true;
+			dockerCompat = true;
+			defaultNetwork.settings.dns_enabled = true;
+		};
+	};
 
 	programs = {
 		firefox.enable = true;
