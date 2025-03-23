@@ -44,7 +44,7 @@
 			theme = "agnoster";
 		};
 
-		initExtra = "
+		initExtra = ''
 			if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
 				. ~/.nix-profile/etc/profile.d/nix.sh
 			fi
@@ -53,6 +53,14 @@
 			export XDG_SCREENSHOTS_DIR=~/Pictures/screenshots
 
 			export PATH=$PATH:~/.local/bin
-		";
+			export NIXDOTFILES=~/nix-dotfiles
+
+			sh -c '
+			cd $NIXDOTFILES &&
+			LAST_UP=$(git --no-pager log -1 --date=default --format="%ct" -- flake.lock) &&
+			NOW=$(date +%s) &&
+			DIFF=$((NOW - LAST_UP)) &&
+			echo "Last nix update: $(($DIFF/86400)) days, $(date -d@$DIFF -u +%H) hours and $(date -d@$DIFF -u +%M) minutes"'
+		'';
 	};
 }
