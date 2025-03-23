@@ -4,6 +4,8 @@
 			"1" = "ssh paissilva@builder3";
 			"2" = "ssh dps@projectpc";
 			"3" = "ssh labgrid@projectpc";
+			"l1" = "source ~/fusion-labgrid/fusion_profile";
+			"l2" = "source ~/fusion-labgrid/tfusion_profile";
 			"ph" = "cd $PROJECTPC_HOME";
 			"bd" = "cd $BUILDER3_DATA";
 			"fh" = "cd $FUSION_HOME";
@@ -72,6 +74,10 @@
 			echo "============================================"
 			echo " [fusion] - Change workspace to Fusion"
 			echo " [vision3] - Change workspace to Vision3"
+			echo "============================================"
+			echo " Setups"
+			echo " [l1] - Fusion dps"
+			echo " [l2] - Fusion tester"
 			echo "============================================"
 			fusion
 			echo "============================================"
