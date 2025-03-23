@@ -18,6 +18,9 @@
 			fd = "cd ${flakeDir}";
 
 			v = "nvim";
+
+			# Tired of 'xterm-kitty': unknown terminal type
+			ssh = "export TERM=tmux; ssh"
 		};
 
 		history.size = 10000;
@@ -29,6 +32,7 @@
 				"git"
 				"sudo"
 				"fzf"
+				"chucknorris"
 			];
 			theme = "agnoster";
 		};
@@ -37,6 +41,9 @@
 			if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
 				. ~/.nix-profile/etc/profile.d/nix.sh
 			fi
+
+			mkdir -p ~/Pictures/screenshots
+			export XDG_SCREENSHOTS_DIR=~/Pictures/screenshots
 
 			export PATH=$PATH:~/.local/bin
 		";
