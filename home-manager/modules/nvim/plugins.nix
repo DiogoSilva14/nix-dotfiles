@@ -51,38 +51,6 @@
 		markdown-preview.enable = true;
 		markdown-preview.settings.auto_start = 1;
 
-		# Neorg
-		neorg = {
-			enable = true;
-			lazyLoading = false;
-			modules = {
-				"core.defaults" = {};
-				"core.keybinds" = {};
-				"core.concealer" = {
-					config = {
-						icon_preset = "diamond";
-					};
-				};
-				"core.dirman" = {
-					config.workspaces = {
-						work = "~/notes/work";
-						home = "~/notes/home";
-					};
-				};
-				"core.completion" = {
-					config.engine = "nvim-cmp";
-				};
-			};
-		};
-		treesitter = {
-			enable = true;
-			grammarPackages = with pkgs.tree-sitter-grammars; [
-				tree-sitter-norg
-				tree-sitter-norg-meta
-			];
-		};
-		cmp.enable = true;
-
 		# LSP
 		lsp-format.enable = true;
 		lsp.enable = true;
@@ -104,6 +72,28 @@
 			};
 			marksman = {
 				enable = true;
+			};
+		};
+
+		# Complete
+		cmp = {
+			enable = true;
+			autoEnableSources = true;
+			settings = {
+				sources = [
+					{ name = "nvim_lsp"; }
+					{ name = "path"; }
+					{ name = "buffer"; }
+				];
+				mapping = {
+					"<C-Space>" = "cmp.mapping.complete()";
+					"<C-d>" = "cmp.mapping.scroll_docs(-4)";
+					"<C-e>" = "cmp.mapping.close()";
+					"<C-f>" = "cmp.mapping.scroll_docs(4)";
+					"<CR>" = "cmp.mapping.confirm({ select = true })";
+					"<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+					"<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+				};
 			};
 		};
 	};
