@@ -26,7 +26,7 @@
 			fusion () {
 				export CURRENT_WORKSPACE="fusion"
 				export YOCTO_HOME=$FUSION_HOME/yocto
-				export YOCTO_HOME=$FUSION_HOME/yocto-fusion_scarthgap
+				export YOCTO_HOME=$FUSION_HOME/yocto-fusion
 				export YOCTO_SOURCES=$YOCTO_HOME/sources
 				export DEVTOOL_SOURCES=$YOCTO_HOME/build/workspace/sources
 				export DEPLOY_DIR=$YOCTO_HOME/build/tmp/deploy/images/$CURRENT_WORKSPACE
