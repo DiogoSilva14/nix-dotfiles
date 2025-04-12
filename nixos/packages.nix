@@ -1,8 +1,4 @@
 { pkgs, ... }: {
-	nixpkgs.config = {
-		allowUnfree = true;
-	};
-
 	environment.systemPackages = with pkgs; [
 		# CLI
 		wget
@@ -21,6 +17,7 @@
 		spice
 		win-spice
 		spice-gtk
+		genymotion
 
 		# Dev
 		distrobox
@@ -49,10 +46,7 @@
 
 	programs = {
 		firefox.enable = true;
-		sway.enable = true;
 		zsh.enable = true;
 		virt-manager.enable = true;
 	};
-
-	services.openssh.enable = true;
 }

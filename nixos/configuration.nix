@@ -10,8 +10,6 @@
 
 	networking.hostName = "nixos"; # Define hostname
 
-	security.polkit.enable = true;
-	services.gnome.gnome-keyring.enable = true;
 	services.flatpak.enable = true;
 
 	boot.supportedFilesystems = [ "ntfs" ];
@@ -28,24 +26,5 @@
 		updateResolvConf = true;
 	};
 
-	services.greetd = {
-		enable = true;
-		settings = {
-			default_session = {
-				command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
-				user = "greeter";
-			};
-		};
-	};
-
-	services.xserver = {
-		enable = true;
-		desktopManager.gnome.enable = true;
-	};
-
 	system.stateVersion = "24.11"; # State version. Not sure if needed with flakes :/
-
-	services.udev.extraRules = ''
-		SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0666", GROUP="plugdev"
-	'';
 }

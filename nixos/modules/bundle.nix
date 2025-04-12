@@ -5,6 +5,7 @@
 		./lang.nix
 		./networking.nix
 		./sound.nix
+		./udev.nix
 		./users.nix
 	];
 }
