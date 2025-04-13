@@ -87,6 +87,7 @@
 			echo " Setups"
 			echo " [l1] - Fusion dps"
 			echo " [l2] - Fusion tester"
+			echo " [l3] - Motion monolith"
 			echo "============================================"
 			fusion
 			echo "============================================"
