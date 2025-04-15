@@ -24,6 +24,7 @@
 		genymotion
 
 		# Dev
+		godot_4
 		distrobox
 		dive
 		podman-tui
