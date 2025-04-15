@@ -2,55 +2,48 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
-
 {
-	imports = [ 
-		(modulesPath + "/installer/scan/not-detected.nix")
-	];
+	imports =
+		[ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-	boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" ];
+	boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "sdhci_pci" ];
 	boot.initrd.kernelModules = [ "i915" ];
 	boot.kernelModules = [ "kvm-intel" ];
 	boot.extraModulePackages = [ ];
 
-	fileSystems."/" = { 
-		device = "/dev/disk/by-uuid/4e6fe993-c132-4449-b642-4904eb411413";
+	fileSystems."/" = { device = "/dev/disk/by-uuid/bedafc50-e221-4fe0-9589-f2ce544e0d1c";
 		fsType = "btrfs";
-		options = [ "subvol=@" ];
 	};
 
-	fileSystems."/boot" = { 
-		device = "/dev/disk/by-uuid/E872-EB11";
+	boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/8fb6e11b-3b53-4d2c-939c-87a8c2889d52";
+
+	fileSystems."/boot" = {
+		device = "/dev/disk/by-uuid/6579-7FC2";
 		fsType = "vfat";
-		options = [ "fmask=0077" "dmask=0077" ];
+		options = [ "fmask=0022" "dmask=0022" ];
 	};
+
+	swapDevices = [ { device = "/dev/disk/by-uuid/fa9f5791-6761-41a0-9c72-cb420b866995"; } ];
 
 	networking.useDHCP = lib.mkDefault true;
 
 	nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 	hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-	
+
 	hardware.bluetooth.enable = true;
 	hardware.bluetooth.powerOnBoot = true;
-	services.blueman.enable = true;
 
-	services.power-profiles-daemon.enable = false;
 	hardware.graphics.enable = true;
-	services.auto-cpufreq.enable = true;
-	services.auto-cpufreq.settings = {
-		battery = {
-			governor = "powersave";
-			turbo = "never";
-		};
-
-		charger = {
-			governor = "performance";
-			turbo = "auto";
-		};
-	};
-
 	services.xserver.videoDrivers = [
 		"i915"
 	];
-	services.thermald.enable = true;
+
+	hardware.opengl = {
+		enable = true;
+		extraPackages = with pkgs; [
+			intel-media-driver
+			libvdpau-va-gl
+			vaapiIntel
+		];
+	};
 }
