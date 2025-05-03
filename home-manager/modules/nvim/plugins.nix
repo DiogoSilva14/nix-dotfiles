@@ -73,6 +73,9 @@
 			marksman = {
 				enable = true;
 			};
+			nixd = {
+				enable = true;
+			};
 		};
 
 		# Complete
