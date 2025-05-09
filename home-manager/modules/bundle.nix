@@ -5,6 +5,7 @@
 		./git.nix
 		./htop.nix
 		./kitty.nix
+		./gnome.nix
 		./nvim/default.nix
 #		./sway/sway.nix
 		./packages.nix
