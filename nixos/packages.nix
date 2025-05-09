@@ -8,6 +8,7 @@
 		wget
 		git
 		ripgrep
+		nvtopPackages.intel
 
 		# Media
 		discord
@@ -34,6 +35,9 @@
 		home-manager
 		libreoffice
 		qbittorrent
+		brave
+		bitwarden
+		chromium
 	];
 
 	services.spice-vdagentd.enable = true;
@@ -50,7 +54,6 @@
 	};
 
 	programs = {
-		firefox.enable = true;
 		zsh.enable = true;
 		virt-manager.enable = true;
 	};
