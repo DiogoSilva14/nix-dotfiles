@@ -22,7 +22,6 @@
     spice
     win-spice
     spice-gtk
-    genymotion
 
     # Dev
     godot_4
@@ -37,11 +36,10 @@
     qbittorrent
     brave
     bitwarden
-    chromium
   ];
 
   services.spice-vdagentd.enable = true;
-  
+
   virtualisation = {
     libvirtd.enable = true;
     spiceUSBRedirection.enable = true;
