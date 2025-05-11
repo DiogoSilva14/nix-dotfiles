@@ -9,6 +9,7 @@
         enabled-extensions = [
           "appindicatorsupport@rgcjonas.gmail.com"
           "tiling-assistant@leleat-on-github"
+          "gsconnect@andyholmes.github.io"
         ];
         favorite-apps = [
           "brave-browser.desktop"
@@ -48,5 +49,6 @@
   home.packages = with pkgs; [
     gnomeExtensions.tiling-assistant
     gnomeExtensions.appindicator
+    gnomeExtensions.gsconnect
   ];
 }
