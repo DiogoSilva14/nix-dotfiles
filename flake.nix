@@ -33,7 +33,7 @@
       modules = [
         ./home-manager/home_dps.nix
         nixvim.homeManagerModules.nixvim
-        catppuccin.homeManagerModules.catppuccin
+        catppuccin.homeModules.catppuccin
       ];
     };
 
@@ -42,7 +42,7 @@
       modules = [
         ./home-manager/home_paissilva.nix
         nixvim.homeManagerModules.nixvim
-        catppuccin.homeManagerModules.catppuccin
+        catppuccin.homeModules.catppuccin
       ];
     };
   };

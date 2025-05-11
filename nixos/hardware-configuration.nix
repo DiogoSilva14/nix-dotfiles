@@ -33,12 +33,11 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-  hardware.graphics.enable = true;
   services.xserver.videoDrivers = [
     "i915"
   ];
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver
