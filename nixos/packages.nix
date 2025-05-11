@@ -1,7 +1,10 @@
-{ pkgs, ... }: {
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
+{ pkgs, lib, ... }: {
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "discord"
+    "obsidian"
+    "spotify"
+  ];
+
 
   environment.systemPackages = with pkgs; [
     # CLI
@@ -36,8 +39,8 @@
     qbittorrent
     brave
     bitwarden
+    obsidian
   ];
-
   services.spice-vdagentd.enable = true;
 
   virtualisation = {

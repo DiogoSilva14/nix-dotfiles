@@ -15,6 +15,7 @@
           "org.gnome.Nautilus.desktop"
           "spotify.desktop"
           "kitty.desktop"
+          "obsidian.desktop"
         ];
       };
 
