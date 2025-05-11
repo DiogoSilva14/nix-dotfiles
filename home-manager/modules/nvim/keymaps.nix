@@ -1,31 +1,31 @@
 {
-	programs.nixvim.globals.mapleader = " ";
+  programs.nixvim.globals.mapleader = " ";
 
-	programs.nixvim.keymaps = [
-		# Project View
-		{
-			mode = "n";
-			key = "<leader>pv";
-			action = "<cmd>Explore<cr>";
-		}
-		# Move selection down one line 
-		{
-			mode = "v";
-			key = "J";
-			action = ":m '>+1<CR>gv=gv";
-		}
-		# Move selection up one line
-		{
-			mode = "v";
-			key = "K";
-			action = ":m '<-2<CR>gv=gv";
-		}
+  programs.nixvim.keymaps = [
+    # Project View
+    {
+      mode = "n";
+      key = "<leader>pv";
+      action = "<cmd>Explore<cr>";
+    }
+    # Move selection down one line 
+    {
+      mode = "v";
+      key = "J";
+      action = ":m '>+1<CR>gv=gv";
+    }
+    # Move selection up one line
+    {
+      mode = "v";
+      key = "K";
+      action = ":m '<-2<CR>gv=gv";
+    }
 # Harpoon
-#		{
-#			mode = "n";
-#			key = "<C-h>";
-#			action = ":lua require('harpoon.ui').toggle_quick_menu()<CR>";
-#		}
-	];
+#    {
+#      mode = "n";
+#      key = "<C-h>";
+#      action = ":lua require('harpoon.ui').toggle_quick_menu()<CR>";
+#    }
+  ];
 
 }

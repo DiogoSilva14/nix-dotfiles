@@ -1,14 +1,14 @@
 { config, pkgs, ... }:
 {
-	imports = [
-		./modules/bundle.nix
-		./work/macros.nix
-		./work/mounts.nix
-	];
+  imports = [
+    ./modules/bundle.nix
+    ./work/macros.nix
+    ./work/mounts.nix
+  ];
 
-	home = {
-		username = "paissilva";
-		homeDirectory = "/home/paissilva";
-		stateVersion = "24.11";
-	};
+  home = {
+    username = "paissilva";
+    homeDirectory = "/home/paissilva";
+    stateVersion = "24.11";
+  };
 }

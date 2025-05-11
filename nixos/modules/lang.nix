@@ -1,9 +1,9 @@
 {
         time.timeZone = "Europe/Vienna";
 
-	i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
 
-	i18n.extraLocaleSettings = {
+  i18n.extraLocaleSettings = {
                 LC_ADDRESS = "de_AT.UTF-8";
                 LC_IDENTIFICATION = "de_AT.UTF-8";
                 LC_MEASUREMENT = "de_AT.UTF-8";
@@ -17,5 +17,5 @@
  
         console.keyMap = "pt-latin1";
         
-	services.xserver.xkb.layout = "pt";
+  services.xserver.xkb.layout = "pt";
 }

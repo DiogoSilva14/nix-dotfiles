@@ -1,9 +1,9 @@
 {
-	programs.kitty = {
-		enable = true;
+  programs.kitty = {
+    enable = true;
 
-		themeFile = "Catppuccin-Mocha";
+    themeFile = "Catppuccin-Mocha";
 
-		font.name = "FiraCode Nerd Font Mono";
-	};
+    font.name = "FiraCode Nerd Font Mono";
+  };
 }

@@ -1,8 +1,8 @@
 {
-	programs.htop = {
-		enable = true;
-		settings = {
-			tree_view = 1;
-		};
-	};
+  programs.htop = {
+    enable = true;
+    settings = {
+      tree_view = 1;
+    };
+  };
 }
