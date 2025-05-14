@@ -12,20 +12,23 @@
           "gsconnect@andyholmes.github.io"
         ];
         favorite-apps = [
+          "com.brave.Browser.desktop"
           "brave-browser.desktop"
           "org.gnome.Nautilus.desktop"
+          "com.spotify.Client.desktop"
           "spotify.desktop"
           "kitty.desktop"
+          "md.obsidian.Obsidian.desktop"
           "obsidian.desktop"
         ];
       };
 
       "org/gnome/desktop/background" = {
-        picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/map-d.svg";
+        picture-uri-dark = "file:///home/*/nix-dotfiles/home-manager/modules/wallpaper.jpg";
       };
 
       "org/gnome/desktop/screensaver" = {
-        picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/map-d.svg";
+        picture-uri = "file:///home/*/nix-dotfiles/home-manager/modules/wallpaper.jpg";
       };
 
       "org/gnome/desktop/interface" = {
