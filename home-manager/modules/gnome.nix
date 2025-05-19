@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   dconf = {
     enable = true;
@@ -24,11 +24,11 @@
       };
 
       "org/gnome/desktop/background" = {
-        picture-uri-dark = "file:///home/*/nix-dotfiles/home-manager/modules/wallpaper.jpg";
+        picture-uri-dark = "${config.home.homeDirectory}/nix-dotfiles/home-manager/modules/wallpaper.jpg";
       };
 
       "org/gnome/desktop/screensaver" = {
-        picture-uri = "file:///home/*/nix-dotfiles/home-manager/modules/wallpaper.jpg";
+        picture-uri = "${config.home.homeDirectory}/nix-dotfiles/home-manager/modules/wallpaper.jpg";
       };
 
       "org/gnome/desktop/interface" = {
