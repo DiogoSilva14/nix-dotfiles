@@ -3,6 +3,8 @@
     "discord"
     "obsidian"
     "spotify"
+    "steam"
+    "steam-unwrapped"
   ];
 
 
@@ -40,6 +42,8 @@
     brave
     bitwarden
     obsidian
+    heroic
+    steam
   ];
   services.spice-vdagentd.enable = true;
 

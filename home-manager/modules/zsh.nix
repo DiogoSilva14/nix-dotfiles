@@ -41,13 +41,10 @@
       theme = "agnoster";
     };
 
-    initExtra = ''
+    initContent = ''
       if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
         . ~/.nix-profile/etc/profile.d/nix.sh
       fi
-
-      mkdir -p ~/Pictures/screenshots
-      export XDG_SCREENSHOTS_DIR=~/Pictures/screenshots
 
       export PATH=$PATH:~/.local/bin
       export NIXDOTFILES=~/nix-dotfiles
