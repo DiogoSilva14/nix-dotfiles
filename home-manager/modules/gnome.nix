@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   dconf = {
     enable = true;
@@ -29,6 +29,11 @@
 
       "org/gnome/desktop/screensaver" = {
         picture-uri = "${config.home.homeDirectory}/nix-dotfiles/home-manager/modules/wallpaper.jpg";
+        lock-delay = lib.gvariant.mkInt32 900;
+      };
+
+      "org/gnome/desktop/session" = {
+        idle-delay = lib.gvariant.mkInt32 300;
       };
 
       "org/gnome/desktop/interface" = {

@@ -22,7 +22,7 @@
       "todo" = "mkdir -p ~/Documents/notes; vi ~/Documents/notes/todo.md";
     };
 
-    initExtra = ''
+    initContent = ''
       export PROJECTPC_HOME=/home/paissilva/mounts/projectpc_home
       export BUILDER3_DATA=/home/paissilva/mounts/builder3_data
       export FUSION_HOME=$BUILDER3_DATA/fusion
@@ -35,7 +35,7 @@
         export YOCTO_SOURCES=$YOCTO_HOME/sources
         export DEVTOOL_SOURCES=$YOCTO_HOME/build/workspace/sources
         export DEPLOY_DIR=$YOCTO_HOME/build/tmp/deploy/images/$CURRENT_WORKSPACE
-        
+
         echo " Workspace set to Fusion"
       }
 
@@ -46,7 +46,7 @@
         export YOCTO_SOURCES=$YOCTO_HOME/sources
         export DEVTOOL_SOURCES=$YOCTO_HOME/build/workspace/sources
         export DEPLOY_DIR=$YOCTO_HOME/build/tmp/deploy/images/$CURRENT_WORKSPACE
-        
+
         echo " Workspace set to Vision3"
       }
 
@@ -58,7 +58,7 @@
         sudo mount -o gid=1769400513,fmask=113,dmask=002 $1 /mnt/ && \
         rm -rf /mnt/vision3updater && \
         cp $DEPLOY_DIR/ttc-image-qt5-target-update.zip /mnt && \
-        unzip /mnt/ttc-image-qt5-target-update.zip -d /mnt 
+        unzip /mnt/ttc-image-qt5-target-update.zip -d /mnt
         sudo umount /mnt
       }
 
