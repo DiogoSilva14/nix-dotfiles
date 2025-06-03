@@ -40,16 +40,27 @@
         show-battery-percentage = true;
       };
 
+      "org/gnome/shell/keybindings" = {
+        show-screenshot-ui = [];
+      };
+
       "org/gnome/settings-daemon/plugins/media-keys" = {
         custom-keybindings = [
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
         ];
       };
 
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
         binding = "<Super>t";
-        command = "kitty";
+        command = "${pkgs.kitty}/bin/kitty";
         name = "Shell";
+      };
+
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+        binding = "Print";
+        command = "${pkgs.flameshot}/bin/flameshot gui";
+        name = "Flameshot";
       };
     };
   };

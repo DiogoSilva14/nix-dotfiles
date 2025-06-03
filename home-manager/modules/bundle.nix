@@ -6,6 +6,7 @@
     ./htop.nix
     ./kitty.nix
     ./gnome.nix
+    ./flameshot.nix
     ./nvim/default.nix
 #    ./sway/sway.nix
     ./packages.nix
