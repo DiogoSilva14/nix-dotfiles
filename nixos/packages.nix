@@ -34,6 +34,8 @@
     dive
     podman-tui
     podman-compose
+    freecad
+    prusa-slicer
 
     # Other
     home-manager
