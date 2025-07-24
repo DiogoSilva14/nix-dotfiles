@@ -2,48 +2,39 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
+
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix") ];
+    [ (modulesPath + "/installer/scan/not-detected.nix")
+    ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "sdhci_pci" ];
-  boot.initrd.kernelModules = [ "i915" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" "sdhci_pci" ];
+  boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" = { device = "/dev/disk/by-uuid/bedafc50-e221-4fe0-9589-f2ce544e0d1c";
-    fsType = "btrfs";
-  };
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/078baa99-0bfe-4562-b4df-72a09fcd9979";
+      fsType = "ext4";
+    };
 
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/8fb6e11b-3b53-4d2c-939c-87a8c2889d52";
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/56DA-1A37";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/6579-7FC2";
-    fsType = "vfat";
-    options = [ "fmask=0022" "dmask=0022" ];
-  };
+  swapDevices = [ ];
 
-  swapDevices = [ { device = "/dev/disk/by-uuid/fa9f5791-6761-41a0-9c72-cb420b866995"; } ];
-
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp0s31f6.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wwan0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-
-  services.xserver.videoDrivers = [
-    "i915"
-  ];
-
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver
-      intel-vaapi-driver
-      libvdpau-va-gl
-      vaapiIntel
-    ];
-  };
 }

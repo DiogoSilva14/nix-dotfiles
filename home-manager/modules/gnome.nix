@@ -9,7 +9,7 @@
         enabled-extensions = [
           "appindicatorsupport@rgcjonas.gmail.com"
           "tiling-assistant@leleat-on-github"
-          "gsconnect@andyholmes.github.io"
+          "marcs14@gmail.com"
         ];
         favorite-apps = [
           "com.brave.Browser.desktop"
@@ -59,7 +59,7 @@
 
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
         binding = "Print";
-        command = "${pkgs.flameshot}/bin/flameshot gui";
+        command = "script --command '${pkgs.flameshot}/bin/flameshot gui' /dev/null";
         name = "Flameshot";
       };
     };
