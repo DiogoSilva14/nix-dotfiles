@@ -8,9 +8,9 @@
       "5" = "ssh labgrid@testwall";
       "6" = "ssh dps@motionpc";
       "7" = "ssh labgrid@motionpc";
-      "l1" = "source ~/fusion-labgrid/fusion_profile";
-      "l2" = "source ~/fusion-labgrid/tfusion_profile";
-      "l3" = "source ~/fusion-labgrid/motion_profile";
+      "l1" = "source ~/fusion-labgrid/environment/fusion_profile";
+      "l2" = "source ~/fusion-labgrid/environment/tfusion_profile";
+      "l3" = "source ~/fusion-labgrid/environment/motion_profile";
       "ph" = "cd $PROJECTPC_HOME";
       "bd" = "cd $BUILDER3_DATA";
       "fh" = "cd $FUSION_HOME";
