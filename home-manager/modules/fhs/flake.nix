@@ -7,16 +7,23 @@
     pkgs = nixpkgs.legacyPackages.${system};
     fhs = pkgs.buildFHSUserEnv {
       name = "fhs-shell";
-      targetPkgs = pkgs: [
-        pkgs.gcc
-        pkgs.libtool
-        pkgs.jdk21
-        pkgs.zlib
-        pkgs.xorg.libX11
-        pkgs.gtk3
-        pkgs.gtk4
-        pkgs.glib
-        pkgs.xorg.libXtst
+      targetPkgs = pkgs: with pkgs; [
+        gcc
+        glib
+        gtk3
+        gtk4
+        jdk21
+        libGL
+        libtool
+        xorg.libX11
+        xorg.libXrandr
+        xorg.libXtst
+        xorg.libXxf86vm
+        xorg.libXi
+        xorg.libXcursor
+        xorg.libXinerama
+        opencl-headers
+        zlib
       ];
     };
   in {

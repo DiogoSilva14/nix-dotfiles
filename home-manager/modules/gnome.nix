@@ -68,6 +68,6 @@
   home.packages = with pkgs; [
     gnomeExtensions.tiling-assistant
     gnomeExtensions.appindicator
-    gnomeExtensions.gsconnect
+    gnomeExtensions.power-tracker
   ];
 }
