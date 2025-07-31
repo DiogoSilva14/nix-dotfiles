@@ -13,15 +13,11 @@
     wget
     git
     ripgrep
-    nvtopPackages.intel
 
     # Media
     discord
     mpv
     spotify
-
-    # Intel GPU Acceleration
-    intel-media-sdk
 
     # Virtualization
     spice
@@ -44,14 +40,13 @@
     brave
     bitwarden
     obsidian
-    heroic
-    steam
+    fwupd
   ];
-  services.spice-vdagentd.enable = true;
+#  services.spice-vdagentd.enable = true;
 
   virtualisation = {
-    libvirtd.enable = true;
-    spiceUSBRedirection.enable = true;
+#    libvirtd.enable = true;
+#    spiceUSBRedirection.enable = true;
 
     podman = {
       enable = true;
@@ -62,6 +57,6 @@
 
   programs = {
     zsh.enable = true;
-    virt-manager.enable = true;
+#    virt-manager.enable = true;
   };
 }
