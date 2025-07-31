@@ -41,6 +41,12 @@
     lsp.enable = true;
     lsp.inlayHints = true;
     lsp.servers = {
+      clangd = {
+        enable = true;
+      };
+      cmake = {
+        enable = true;
+      };
       rust_analyzer = {
         enable = true;
         installCargo = true;
