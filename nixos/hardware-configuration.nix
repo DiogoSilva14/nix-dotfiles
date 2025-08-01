@@ -27,11 +27,11 @@
   ];
   boot.resumeDevice = "/dev/disk/by-uuid/078baa99-0bfe-4562-b4df-72a09fcd9979";
   powerManagement.enable = true;
-#  services.logind.lidSwitch = "suspend-then-hibernate";
-#  systemd.sleep.extraConfig = ''
-#    HibernateDelaySec=60m
-#    SuspendState=mem
-#  '';
+  services.logind.lidSwitch = "suspend-then-hibernate";
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=60m
+    SuspendState=mem
+  '';
   powerManagement.powertop.enable = true;
   services.udev.extraRules = ''
   ACTION=="add" SUBSYSTEM=="pci" ATTR{vendor}=="0x8086" ATTR{device}=="0x51b9" ATTR{power/wakeup}="disabled"
