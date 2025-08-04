@@ -1,6 +1,7 @@
 { pkgs, lib, ... }: {
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "discord"
+    "libfprint-2-tod1-broadcom"
     "obsidian"
     "spotify"
     "steam"
@@ -32,6 +33,9 @@
     podman-compose
     freecad
     prusa-slicer
+
+    # Hardware support
+    libfprint-2-tod1-broadcom
 
     # Other
     home-manager
