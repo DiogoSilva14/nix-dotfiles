@@ -41,12 +41,12 @@
     lsp.enable = true;
     lsp.inlayHints = true;
     lsp.servers = {
-      clangd = {
-        enable = true;
-      };
-      cmake = {
-        enable = true;
-      };
+      clangd.enable = true;
+      cmake.enable = true;
+      marksman.enable = true;
+      nixd.enable = true;
+      slint_lsp.enable = true;
+      bashls.enable = true;
       rust_analyzer = {
         enable = true;
         installCargo = true;
@@ -60,15 +60,6 @@
             ruff.enabled = true;
           };
         };
-      };
-      marksman = {
-        enable = true;
-      };
-      nixd = {
-        enable = true;
-      };
-      slint_lsp = {
-        enable = true;
       };
     };
 

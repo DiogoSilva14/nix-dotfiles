@@ -5,6 +5,7 @@
     fortune
     uv
     fzf
+    hyprland
 
     (pkgs.python311.withPackages (ppkgs: [
       ppkgs.ollama
