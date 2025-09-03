@@ -6,6 +6,7 @@
     uv
     fzf
     hyprland
+    oelint-adv
 
     (pkgs.python311.withPackages (ppkgs: [
       ppkgs.ollama
