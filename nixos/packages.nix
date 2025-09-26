@@ -34,9 +34,6 @@
     freecad
     prusa-slicer
 
-    # Hardware support
-    libfprint-2-tod1-broadcom
-
     # Other
     home-manager
     libreoffice
@@ -46,7 +43,10 @@
     obsidian
     fwupd
   ];
-#  services.spice-vdagentd.enable = true;
+
+  services.fprintd.enable = true;
+  services.fprintd.tod.enable = true;
+  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-broadcom;
 
   virtualisation = {
 #    libvirtd.enable = true;

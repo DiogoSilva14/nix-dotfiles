@@ -55,6 +55,11 @@
       NOW=$(date +%s) &&
       DIFF=$((NOW - LAST_UP)) &&
       echo "Last nix update: $(($DIFF/86400)) days, $(date -d@$DIFF -u +%H) hours and $(date -d@$DIFF -u +%M) minutes"'
+
+      if [ -n "$CONTAINER_ID" ]; then
+        PS1="[$CONTAINER_ID] $PS1"
+      fi
+
     '';
   };
 }
