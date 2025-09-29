@@ -14,6 +14,7 @@
     wget
     git
     ripgrep
+    btop
 
     # Media
     discord
@@ -42,6 +43,8 @@
     bitwarden
     obsidian
     fwupd
+    obs-studio
+    gimp
   ];
 
   services.fprintd.enable = true;
