@@ -6,8 +6,6 @@
       "3" = "ssh labgrid@projectpc";
       "4" = "ssh dps@testwall";
       "5" = "ssh labgrid@testwall";
-      "6" = "ssh dps@motionpc";
-      "7" = "ssh labgrid@motionpc";
       "l1" = "source ~/fusion-labgrid/environment/fusion_profile";
       "l2" = "source ~/fusion-labgrid/environment/tfusion_profile";
       "l3" = "source ~/fusion-labgrid/environment/motion_profile";
@@ -83,6 +81,7 @@
       echo " [5] - labgrid@testwall"
       echo " [6] - dps@motionpc"
       echo " [7] - labgrid@motionpc"
+      echo " [8] - dps@testwall"
       echo "============================================"
       echo " [fusion] - Change workspace to Fusion"
       echo " [vision3] - Change workspace to Vision3"

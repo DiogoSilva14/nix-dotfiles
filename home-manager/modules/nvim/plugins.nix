@@ -1,5 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
+  programs.nixvim.nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "copilot.vim"
+  ];
+
   programs.nixvim.plugins = {
     # Telescope needs this one
     web-devicons.enable = true;
@@ -35,6 +39,10 @@
     # Markdown preview
     markdown-preview.enable = true;
     markdown-preview.settings.auto_start = 1;
+
+    # Copilot
+    copilot-chat.enable = true;
+    copilot-vim.enable = true;
 
     # LSP
     lsp-format.enable = true;

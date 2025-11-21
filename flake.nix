@@ -14,7 +14,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin.url = "github:catppuccin/nix/release-25.05";
   };
 
   outputs = { self, nixpkgs, home-manager, nixvim, catppuccin, ... }@inputs:
