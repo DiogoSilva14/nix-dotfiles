@@ -79,19 +79,11 @@
       echo " [3] - labgrid@projectpc"
       echo " [4] - dps@testwall"
       echo " [5] - labgrid@testwall"
-      echo " [6] - dps@motionpc"
-      echo " [7] - labgrid@motionpc"
-      echo " [8] - dps@testwall"
-      echo "============================================"
-      echo " [fusion] - Change workspace to Fusion"
-      echo " [vision3] - Change workspace to Vision3"
       echo "============================================"
       echo " Setups"
       echo " [l1] - Fusion dps"
       echo " [l2] - Fusion tester"
       echo " [l3] - Motion monolith"
-      echo "============================================"
-      fusion
       echo "============================================"
       echo
     '';
