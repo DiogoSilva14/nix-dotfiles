@@ -6,6 +6,7 @@
     "spotify"
     "steam"
     "steam-unwrapped"
+    "saleae-logic-2"
   ];
 
 
@@ -45,7 +46,14 @@
     fwupd
     obs-studio
     gimp
+    rkdeveloptool
+    screen
+    socat
   ];
+
+  environment.etc."screenrc".text = ''
+    defscrollback 10000
+  '';
 
   services.fprintd.enable = true;
   services.fprintd.tod.enable = true;

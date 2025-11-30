@@ -11,12 +11,12 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/078baa99-0bfe-4562-b4df-72a09fcd9979";
+    { device = "/dev/disk/by-uuid/eb1dd286-f1c9-41db-817c-34c180eed5e1";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/56DA-1A37";
+    { device = "/dev/disk/by-uuid/2961-0B66";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
@@ -25,7 +25,7 @@
     "resume_offset=33198080"
     "mem_sleep_default=s2idle"
   ];
-  boot.resumeDevice = "/dev/disk/by-uuid/078baa99-0bfe-4562-b4df-72a09fcd9979";
+  boot.resumeDevice = "/dev/disk/by-uuid/eb1dd286-f1c9-41db-817c-34c180eed5e1";
   powerManagement.enable = true;
   services.logind.lidSwitch = "suspend-then-hibernate";
   systemd.sleep.extraConfig = ''
