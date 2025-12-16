@@ -10,6 +10,7 @@
   networking.hostName = "nixos"; # Define hostname
 
   services.flatpak.enable = true;
+  services.tailscale.enable = true;
 
   boot.supportedFilesystems = [ "ntfs" ];
 
