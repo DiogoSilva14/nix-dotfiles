@@ -41,7 +41,7 @@
     libreoffice
     qbittorrent
     brave
-    bitwarden
+    bitwarden-desktop
     obsidian
     fwupd
     obs-studio
