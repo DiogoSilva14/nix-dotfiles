@@ -8,7 +8,8 @@
       "5" = "ssh labgrid@testwall";
       "l1" = "source ~/fusion-labgrid/environment/fusion_profile";
       "l2" = "source ~/fusion-labgrid/environment/tfusion_profile";
-      "l3" = "source ~/fusion-labgrid/environment/motion_profile";
+      "l3" = "source ~/fusion-labgrid/environment/fusion_testwall_profile";
+      "l4" = "source ~/fusion-labgrid/environment/motion_profile";
       "ph" = "cd $PROJECTPC_HOME";
       "bd" = "cd $BUILDER3_DATA";
       "fh" = "cd $FUSION_HOME";
@@ -83,7 +84,8 @@
       echo " Setups"
       echo " [l1] - Fusion dps"
       echo " [l2] - Fusion tester"
-      echo " [l3] - Motion monolith"
+      echo " [l3] - Fusion testwall"
+      echo " [l4] - Motion monolith"
       echo "============================================"
       echo
     '';
