@@ -47,7 +47,6 @@
       "org/gnome/settings-daemon/plugins/media-keys" = {
         custom-keybindings = [
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
         ];
       };
 
@@ -55,12 +54,6 @@
         binding = "<Super>t";
         command = "${pkgs.kitty}/bin/kitty";
         name = "Shell";
-      };
-
-      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
-        binding = "Print";
-        command = "script --command '${pkgs.flameshot}/bin/flameshot gui' /dev/null";
-        name = "Flameshot";
       };
     };
   };

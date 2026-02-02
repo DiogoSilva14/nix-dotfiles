@@ -32,7 +32,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
       modules = [
         ./home-manager/home_dps.nix
-        nixvim.homeManagerModules.nixvim
+        nixvim.homeModules.nixvim
         catppuccin.homeModules.catppuccin
       ];
     };
@@ -41,7 +41,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
       modules = [
         ./home-manager/home_paissilva.nix
-        nixvim.homeManagerModules.nixvim
+        nixvim.homeModules.nixvim
         catppuccin.homeModules.catppuccin
       ];
     };

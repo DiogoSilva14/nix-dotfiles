@@ -27,7 +27,11 @@
   ];
   boot.resumeDevice = "/dev/disk/by-uuid/eb1dd286-f1c9-41db-817c-34c180eed5e1";
   powerManagement.enable = true;
-  services.logind.lidSwitch = "suspend-then-hibernate";
+  services.logind = {
+    lidSwitch = "suspend";
+    lidSwitchExternalPower = "suspend";
+    lidSwitchDocked = "ignore";
+  };
   systemd.sleep.extraConfig = ''
     HibernateDelaySec=60m
     SuspendState=mem
