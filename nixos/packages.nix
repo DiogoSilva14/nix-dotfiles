@@ -3,10 +3,6 @@
     "discord"
     "libfprint-2-tod1-broadcom"
     "obsidian"
-    "spotify"
-    "steam"
-    "steam-unwrapped"
-    "saleae-logic-2"
   ];
 
 
@@ -18,9 +14,8 @@
     btop
 
     # Media
-    discord
     mpv
-    spotify
+    deezer-enhanced
 
     # Virtualization
     spice
@@ -28,9 +23,7 @@
     spice-gtk
 
     # Dev
-    godot_4
     distrobox
-    dive
     podman-tui
     podman-compose
     freecad
@@ -60,9 +53,6 @@
   services.fprintd.tod.driver = pkgs.libfprint-2-tod1-broadcom;
 
   virtualisation = {
-#    libvirtd.enable = true;
-#    spiceUSBRedirection.enable = true;
-
     podman = {
       enable = true;
       dockerCompat = true;
@@ -72,6 +62,5 @@
 
   programs = {
     zsh.enable = true;
-#    virt-manager.enable = true;
   };
 }

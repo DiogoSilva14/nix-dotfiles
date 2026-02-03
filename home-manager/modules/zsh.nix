@@ -11,7 +11,7 @@
       flakeDir = "~/nix-dotfiles";
       fhsDir = "${flakeDir}/home-manager/modules/fhs";
     in {
-      rebuild = "sudo nixos-rebuild switch --flake ${flakeDir} && home-manager switch --flake ${flakeDir}";
+      rebuild = "sudo nixos-rebuild switch --flake ${flakeDir}#$(hostname)";
       hms = "nix run nixpkgs#home-manager -- switch --flake ${flakeDir}";
       nix-up = "
         cd ${flakeDir} &&

@@ -18,32 +18,55 @@
   };
 
   outputs = { self, nixpkgs, home-manager, nixvim, catppuccin, ... }@inputs:
+  let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs { inherit system; };
 
-    let
-      system = "x86_64-linux";
-    in {
+    mkNixos = host:
+      nixpkgs.lib.nixosSystem {
+        inherit system;
 
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      inherit system;
-      modules = [ ./nixos/configuration.nix ];
+        modules = [
+          ./nixos/hosts/${host}/configuration.nix
+          home-manager.nixosModules.home-manager
+
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+
+            home-manager.users.dps = {
+              imports = [
+                ./home-manager/home_dps.nix
+                nixvim.homeModules.nixvim
+                catppuccin.homeModules.catppuccin
+              ];
+            };
+          }
+        ];
+
+        specialArgs = { inherit inputs; };
+      };
+
+    mkHome = file:
+      home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        modules = [
+          file
+          nixvim.homeModules.nixvim
+          catppuccin.homeModules.catppuccin
+        ];
+      };
+
+  in {
+    nixosConfigurations = {
+      tiolaptop = mkNixos "tiolaptop";
+      tioserver = mkNixos "tioserver";
     };
 
-    homeConfigurations.dps = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
-      modules = [
-        ./home-manager/home_dps.nix
-        nixvim.homeModules.nixvim
-        catppuccin.homeModules.catppuccin
-      ];
-    };
-
-    homeConfigurations.paissilva = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
-      modules = [
-        ./home-manager/home_paissilva.nix
-        nixvim.homeModules.nixvim
-        catppuccin.homeModules.catppuccin
-      ];
+    homeConfigurations = {
+      paissilva = mkHome ./home-manager/home_paissilva.nix;
     };
   };
 }
+
