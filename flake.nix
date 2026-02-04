@@ -3,6 +3,11 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.0.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
@@ -17,17 +22,20 @@
     catppuccin.url = "github:catppuccin/nix/release-25.11";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim, catppuccin, ... }@inputs:
+  outputs = { self, nixpkgs, lanzaboote, home-manager, nixvim, catppuccin, ... }@inputs:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
 
-    mkNixos = host:
+    mkNixos = host: isHeadless:
       nixpkgs.lib.nixosSystem {
         inherit system;
 
         modules = [
           ./nixos/hosts/${host}/configuration.nix
+          lanzaboote.nixosModules.lanzaboote
+        ]
+        ++ (if !isHeadless then [
           home-manager.nixosModules.home-manager
 
           {
@@ -42,7 +50,7 @@
               ];
             };
           }
-        ];
+        ] else []);
 
         specialArgs = { inherit inputs; };
       };
@@ -60,8 +68,8 @@
 
   in {
     nixosConfigurations = {
-      tiolaptop = mkNixos "tiolaptop";
-      tioserver = mkNixos "tioserver";
+      tiolaptop = mkNixos "tiolaptop" false;
+      tioserver = mkNixos "tioserver" true;
     };
 
     homeConfigurations = {
@@ -69,4 +77,3 @@
     };
   };
 }
-
