@@ -30,6 +30,7 @@
     prusa-slicer
 
     # Other
+    thunderbird
     home-manager
     libreoffice
     qbittorrent
