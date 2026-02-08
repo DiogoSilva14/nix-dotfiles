@@ -31,6 +31,7 @@
 
     # Other
     thunderbird
+    protonmail-bridge
     home-manager
     libreoffice
     qbittorrent

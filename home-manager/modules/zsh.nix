@@ -22,9 +22,7 @@
         cd -
       ";
       fhs = "nix develop ${fhsDir}";
-
       fd = "cd ${flakeDir}";
-
       v = "nvim";
     };
 
