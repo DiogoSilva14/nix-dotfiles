@@ -40,10 +40,6 @@
     markdown-preview.enable = true;
     markdown-preview.settings.auto_start = 1;
 
-    # Copilot
-    copilot-chat.enable = true;
-    copilot-vim.enable = true;
-
     # LSP
     lsp-format.enable = true;
     lsp.enable = true;

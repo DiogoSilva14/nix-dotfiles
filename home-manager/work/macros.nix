@@ -6,10 +6,10 @@
       "3" = "ssh labgrid@projectpc";
       "4" = "ssh dps@testwall";
       "5" = "ssh labgrid@testwall";
-      "l1" = "source ~/fusion-labgrid/environment/fusion_profile";
-      "l2" = "source ~/fusion-labgrid/environment/tfusion_profile";
-      "l3" = "source ~/fusion-labgrid/environment/fusion_testwall_profile";
-      "l4" = "source ~/fusion-labgrid/environment/motion_profile";
+      "l1" = "source ~/fusion-labgrid/environment/fusion_dps";
+      "l2" = "source ~/fusion-labgrid/environment/fusion_tester";
+      "l3" = "source ~/fusion-labgrid/environment/fusion_testwall";
+      "l4" = "source ~/fusion-labgrid/environment/motion_tester";
       "ph" = "cd $PROJECTPC_HOME";
       "bd" = "cd $BUILDER3_DATA";
       "fh" = "cd $FUSION_HOME";
