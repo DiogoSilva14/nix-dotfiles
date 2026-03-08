@@ -2,6 +2,7 @@
 {
   imports = [
     ./modules/bundle.nix
+    ./modules/bundle-gui.nix
     ./work/macros.nix
     ./work/mounts.nix
   ];

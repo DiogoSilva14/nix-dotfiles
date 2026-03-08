@@ -34,24 +34,23 @@
         modules = [
           ./nixos/hosts/${host}/configuration.nix
           lanzaboote.nixosModules.lanzaboote
-        ]
-        ++ (if !isHeadless then [
-          home-manager.nixosModules.home-manager
-
-          {
+          home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
             home-manager.users.dps = {
               imports = [
-                ./home-manager/home_dps.nix
                 nixvim.homeModules.nixvim
                 catppuccin.homeModules.catppuccin
-              ];
+              ]
+              ++ (if !isHeadless then [
+                ./home-manager/home_dps.nix
+              ] else [
+                ./home-manager/home_dps_server.nix
+              ]);
             };
           }
-        ] else []);
-
+        ];
         specialArgs = { inherit inputs; };
       };
 

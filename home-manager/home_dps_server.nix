@@ -2,7 +2,6 @@
 {
   imports = [
     ./modules/bundle.nix
-    ./modules/bundle-gui.nix
   ];
 
   home = {
