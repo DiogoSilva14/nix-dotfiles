@@ -14,12 +14,12 @@
   nixpkgs.overlays = [
     (final: prev: {
       flameshot = prev.flameshot.overrideAttrs (old: {
-        version = "master-2025-02-25";
+        version = "master-2025-01-06";
         src = prev.fetchFromGitHub {
           owner = "flameshot-org";
           repo = "flameshot";
-          rev = "76d883362fa1872f3e0aa31c179c98ebbd0effff";
-          hash = "sha256-a74986b0a73dd6215feb329e8a535cff831daf34eb480d457490960e006c0414";
+          rev = "bee989ec55e7034a782fd18bd4e694b74a62ac32";
+          hash = "sha256-/Bq9/wqGEwkxmiXG8N220flBnoybm0/xVVC0pDkf7jw=";
         };
         patches = [];
         postPatch = ''

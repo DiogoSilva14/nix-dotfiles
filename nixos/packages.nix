@@ -28,9 +28,8 @@
     prusa-slicer
 
     # Other
-    flameshot
+    grim
     thunderbird
-    home-manager
     libreoffice
     qbittorrent
     firefox
