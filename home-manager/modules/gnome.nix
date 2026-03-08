@@ -12,11 +12,9 @@
           "marcs14@gmail.com"
         ];
         favorite-apps = [
-          "com.brave.Browser.desktop"
-          "brave-browser.desktop"
+          "firefox.desktop"
           "org.gnome.Nautilus.desktop"
-          "com.spotify.Client.desktop"
-          "spotify.desktop"
+          "deezer-enhanced.desktop"
           "kitty.desktop"
           "md.obsidian.Obsidian.desktop"
           "obsidian.desktop"

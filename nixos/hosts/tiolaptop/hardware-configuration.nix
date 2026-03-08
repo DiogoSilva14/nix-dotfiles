@@ -3,43 +3,43 @@
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
-
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" "sdhci_pci" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "dm-snapshot" "cryptd" ];
+  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-label/NIXLUKS";
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/eb1dd286-f1c9-41db-817c-34c180eed5e1";
+    { device = "/dev/disk/by-label/NIXROOT";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/2961-0B66";
+    { device = "/dev/disk/by-label/NIXBOOT";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
   boot.kernelParams = [
-    "resume_offset=33198080"
+    "resume_offset=1542144"
     "mem_sleep_default=s2idle"
   ];
-  boot.resumeDevice = "/dev/disk/by-uuid/eb1dd286-f1c9-41db-817c-34c180eed5e1";
+  boot.resumeDevice = "/dev/disk/by-uuid/9fdc3354-48d1-48c5-944a-63629c58efd9";
   powerManagement.enable = true;
   services.logind.settings.Login = {
-    HandleLidSwitch = "suspend";
-    HandleLidSwitchExternalPower = "suspend";
+    HandleLidSwitch = "suspend-then-hibernate";
+    HandleLidSwitchExternalPower = "suspend-then-hibernate";
     HandleLibSwitchDocker = "ignore";
   };
   systemd.sleep.extraConfig = ''
-    HibernateDelaySec=60m
+    HibernateDelaySec=30m
     SuspendState=mem
   '';
   powerManagement.powertop.enable = true;
   services.udev.extraRules = ''
-  ACTION=="add" SUBSYSTEM=="pci" ATTR{vendor}=="0x8086" ATTR{device}=="0x51b9" ATTR{power/wakeup}="disabled"
-'';
+    ACTION=="add" SUBSYSTEM=="pci" ATTR{vendor}=="0x8086" ATTR{device}=="0x51b9" ATTR{power/wakeup}="disabled"
+  '';
 
   swapDevices = [{
     device = "/var/lib/swapfile";

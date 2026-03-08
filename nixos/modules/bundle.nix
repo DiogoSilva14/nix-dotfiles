@@ -7,5 +7,6 @@
     ./sound.nix
     ./udev.nix
     ./users.nix
+    ./flameshot-overlay.nix
   ];
 }

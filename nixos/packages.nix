@@ -1,10 +1,8 @@
 { pkgs, lib, ... }: {
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "discord"
     "libfprint-2-tod1-broadcom"
     "obsidian"
   ];
-
 
   environment.systemPackages = with pkgs; [
     # CLI
@@ -30,12 +28,12 @@
     prusa-slicer
 
     # Other
+    flameshot
     thunderbird
-    protonmail-bridge
     home-manager
     libreoffice
     qbittorrent
-    brave
+    firefox
     bitwarden-desktop
     obsidian
     fwupd
