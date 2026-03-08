@@ -8,7 +8,6 @@
   boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-label/NIXLUKS";
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   fileSystems."/" =
     { device = "/dev/disk/by-label/NIXROOT";
@@ -39,6 +38,7 @@
   powerManagement.powertop.enable = true;
   services.udev.extraRules = ''
     ACTION=="add" SUBSYSTEM=="pci" ATTR{vendor}=="0x8086" ATTR{device}=="0x51b9" ATTR{power/wakeup}="disabled"
+    SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0666", GROUP="plugdev"
   '';
 
   swapDevices = [{
@@ -50,15 +50,13 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  services.fwupd.enable = true;
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver
-        intel-vaapi-driver
-        libvdpau-va-gl
-        nvtopPackages.intel
+      intel-vaapi-driver
+      libvdpau-va-gl
+      nvtopPackages.intel
     ];
   };
-
 }

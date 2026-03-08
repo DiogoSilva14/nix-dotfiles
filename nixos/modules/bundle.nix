@@ -1,12 +1,10 @@
 {
   imports = [
     ./bootloader.nix
-    ./dm.nix
+    ./general.nix
     ./lang.nix
     ./networking.nix
-    ./sound.nix
-    ./udev.nix
+    ./packages.nix
     ./users.nix
-    ./flameshot-overlay.nix
   ];
 }
