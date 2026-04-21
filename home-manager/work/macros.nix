@@ -28,7 +28,7 @@
       export BUILDER3_DATA=/home/paissilva/mounts/builder3_data
       export FUSION_HOME=$BUILDER3_DATA/fusion
       export VISION3_HOME=$BUILDER3_DATA/vision3
-      export PATH=$PATH:/home/paissilva/util-scripts
+      export PATH=$PATH:/home/paissilva/util-scripts:/home/paissilva/.opencode/bin
 
       fusion () {
         export CURRENT_WORKSPACE="fusion"
