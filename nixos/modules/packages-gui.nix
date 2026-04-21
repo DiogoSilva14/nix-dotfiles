@@ -2,6 +2,7 @@
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "libfprint-2-tod1-broadcom"
     "obsidian"
+    "spotify"
   ];
 
   environment.systemPackages = with pkgs; [

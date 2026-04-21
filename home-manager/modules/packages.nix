@@ -6,6 +6,7 @@
     fzf
     oelint-adv
     btop
+    spotify
   ];
   home.file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
 }
