@@ -1,4 +1,6 @@
+{ lib, ... }:
 {
+  services.easyeffects.enable = lib.mkForce false;
   programs.zsh = {
     shellAliases = {
       "1" = "ssh paissilva@builder3";
