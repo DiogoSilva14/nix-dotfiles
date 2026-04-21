@@ -16,7 +16,6 @@
           "firefox.desktop"
           "org.gnome.Nautilus.desktop"
           "kitty.desktop"
-          "com.spotify.Client.desktop"
           "spotify.desktop"
           "md.obsidian.Obsidian.desktop"
           "obsidian.desktop"
