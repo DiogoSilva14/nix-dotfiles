@@ -65,13 +65,7 @@ in
     defscrollback 10000
   '';
 
-  virtualisation = {
-    podman = {
-      enable = true;
-      dockerCompat = true;
-      defaultNetwork.settings.dns_enabled = true;
-    };
-  };
+  virtualisation.podman.enable = true;
 
   services.fwupd.enable = true;
 

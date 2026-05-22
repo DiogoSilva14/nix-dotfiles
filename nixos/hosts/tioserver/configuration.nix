@@ -2,6 +2,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ./networking.nix
       ../../modules/bundle.nix
       ../../modules/server-services.nix
     ];

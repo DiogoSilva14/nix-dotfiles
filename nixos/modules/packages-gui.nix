@@ -24,6 +24,7 @@
     obsidian
     obs-studio
     gimp
+    spotify
   ];
 
   services.fprintd.enable = true;
