@@ -21,10 +21,10 @@
     };
 
   boot.kernelParams = [
-    "resume_offset=1542144"
+    "resume_offset=57122816"
     "mem_sleep_default=s2idle"
   ];
-  boot.resumeDevice = "/dev/disk/by-uuid/9fdc3354-48d1-48c5-944a-63629c58efd9";
+  boot.resumeDevice = "/dev/disk/by-label/NIXROOT";
   powerManagement.enable = true;
   services.logind.settings.Login = {
     HandleLidSwitch = "suspend-then-hibernate";
