@@ -40,6 +40,7 @@ in
     screen
     socat
     rkdeveloptool
+    sops
 
     # Virtualization
     spice

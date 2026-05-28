@@ -24,10 +24,11 @@
     };
 
     script = ''
-      ${pkgs.ethtool}/sbin/ethtool -K enp0s20f0u4 rx-udp-gro-forwarding on
-      ${pkgs.ethtool}/sbin/ethtool -K enp0s20f0u4 rx-gro-list off
       ${pkgs.ethtool}/sbin/ethtool -K eno1 rx-udp-gro-forwarding on
       ${pkgs.ethtool}/sbin/ethtool -K eno1 rx-gro-list off
     '';
   };
+
+  services.resolved.enable = true;
+  networking.nameservers = [ "127.0.0.1" ];
 }

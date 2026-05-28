@@ -19,10 +19,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     catppuccin.url = "github:catppuccin/nix/release-25.11";
   };
 
-  outputs = { self, nixpkgs, lanzaboote, home-manager, nixvim, catppuccin, ... }@inputs:
+  outputs = { self, nixpkgs, lanzaboote, home-manager, nixvim, catppuccin, sops-nix, ... }@inputs:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
@@ -34,6 +39,7 @@
         modules = [
           ./nixos/hosts/${host}/configuration.nix
           lanzaboote.nixosModules.lanzaboote
+          sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

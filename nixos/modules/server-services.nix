@@ -5,102 +5,190 @@
   virtualisation.docker.enable = true;
   virtualisation.oci-containers = {
     backend = "docker";
-  };
 
-  virtualisation.oci-containers.containers.pihole = {
-    image = "pihole/pihole:latest";
+    containers = {
+      pihole = {
+        image = "pihole/pihole:latest";
 
-    autoStart = true;
+        autoStart = true;
 
-    ports = [
-      "53:53/tcp"
-      "53:53/udp"
-      "80:80/tcp"
-    ];
+        ports = [
+          "53:53/tcp"
+          "53:53/udp"
+          "8081:80/tcp"
+        ];
 
-    volumes = [
-      "/data/containers/pihole/etc-pihole:/etc/pihole"
-      "/data/containers/pihole/etc-dnsmasq.d:/etc/dnsmasq.d"
-    ];
+        volumes = [
+          "/data/containers/pihole/etc-pihole:/etc/pihole"
+          "/data/containers/pihole/etc-dnsmasq.d:/etc/dnsmasq.d"
+        ];
 
-    environment = {
-      TZ = "Europe/Paris";
-      FTLCONF_webserver_api_password = "test123";
-      FTLCONF_dns_listeningMode = "ALL";
+        environmentFiles = [
+          config.sops.secrets.pihole_env.path
+        ];
+
+        environment = {
+          TZ = "Europe/Paris";
+          FTLCONF_dns_listeningMode = "ALL";
+        };
+      };
+
+      couchdb = {
+        image = "couchdb:latest";
+
+        autoStart = true;
+
+        ports = [
+          "5984:5984/tcp"
+        ];
+
+        volumes = [
+          "/data/containers/couchdb/data:/opt/couchdb/data"
+          "/data/containers/couchdb/local.ini:/opt/couchdb/etc/local.ini"
+        ];
+      };
+
+      jellyfin = {
+        image = "jellyfin/jellyfin:latest";
+
+        autoStart = true;
+
+        ports = [
+          "8096:8096/tcp"
+          "7359:7359/tcp"
+        ];
+
+        volumes = [
+          "/data/containers/jellyfin/config:/config"
+          "/data/containers/jellyfin/cache:/cache"
+          "/data/media:/media:ro"
+        ];
+
+        extraOptions = [
+          "--device=/dev/dri/renderD128:/dev/dri/renderD128"
+          "--group-add=${toString config.users.groups.render.gid}"
+        ];
+      };
+
+      nextcloud-db = {
+        image = "mariadb:lts";
+
+        autoStart = true;
+
+        volumes = [
+          "/data/containers/nextcloud-db/data:/var/lib/mysql"
+        ];
+
+        environmentFiles = [
+          config.sops.secrets.nextcloud_env.path
+        ];
+
+        environment = {
+          MYSQL_DATABASE = "nextcloud";
+          MYSQL_USER = "nextcloud";
+        };
+
+        extraOptions = [ "--network=nextcloud" ];
+
+        cmd = [
+          "--transaction-isolation=READ-COMMITTED"
+        ];
+      };
+
+      nextcloud-redis = {
+        image = "redis:alpine";
+
+        autoStart = true;
+
+        extraOptions = [ "--network=nextcloud" ];
+      };
+
+      nextcloud = {
+        image = "nextcloud:latest";
+
+        autoStart = true;
+
+        dependsOn = [
+          "nextcloud-db"
+          "nextcloud-redis"
+        ];
+
+        ports = [
+          "8080:80"
+        ];
+
+        volumes = [
+          "/data/containers/nextcloud/data:/var/www/html"
+        ];
+
+        environmentFiles = [
+          config.sops.secrets.nextcloud_env.path
+        ];
+
+        environment = {
+          MYSQL_DATABASE = "nextcloud";
+          MYSQL_USER = "nextcloud";
+        };
+
+        extraOptions = [ "--network=nextcloud" ];
+      };
+
+      qbittorrent = {
+        image = "lscr.io/linuxserver/qbittorrent:latest";
+
+        autoStart = true;
+
+        volumes = [
+          "/data/downloads:/downloads"
+          "/data/containers/qbittorrent/appdata:/config"
+        ];
+
+        environment = {
+          PUID = "1000";
+          PGID = "1000";
+          WEBUI_PORT = "8090";
+        };
+
+        extraOptions = [ "--network=host" ];
+      };
+
+      homeassistant = {
+        image = "ghcr.io/home-assistant/home-assistant:stable";
+
+        autoStart = true;
+
+        volumes = [
+          "/data/containers/homeassistant/config:/config"
+          "/etc/localtime:/etc/localtime:ro"
+          "/run/dbus:/run/dbus:ro"
+        ];
+
+        extraOptions = [
+          "--device=/dev/zigbee_adapter:/dev/ttyACM0"
+          "--network=host"
+          "--privileged"
+        ];
+      };
     };
   };
 
-  #services.nextcloud = {
-  #  enable = true;
-  #  hostName = "tioserver";
-  #  config.dbtype = "sqlite";
-  #  datadir = "/data/nextcloud";
-  #  config.adminpassFile = "/data/nextcloud/admin-pwd";
+  systemd.services.create-nextcloud-network = {
+    wantedBy = [ "multi-user.target" ];
 
-  #  phpOptions."upload_max_filesize" = lib.mkForce "40G";
-  #  phpOptions."post_max_size" = lib.mkForce "40G";
-  #  phpOptions."memory_limit" = "512M";
-  #  phpOptions."max_execution_time" = "3600";
-  #  phpOptions."max_input_time" = "3600";
-  #};
+    serviceConfig.Type = "oneshot";
 
-  #services.couchdb = {
-  #  enable = true;
-  #  configFile = "/data/couchdb/local.ini";
-  #  logFile = "/data/couchdb/couchdb.log";
-  #  databaseDir = "/data/couchdb";
-  #};
+    script = ''
+      ${pkgs.docker}/bin/docker network inspect nextcloud >/dev/null 2>&1 || \
+      ${pkgs.docker}/bin/docker network create nextcloud
+    '';
+  };
 
-  #services.home-assistant = {
-  #  enable = true;
-  #  configDir = "/data/home-assistant";
-  #  config = {
-  #    default_config = {};
-  #  };
-  #  extraComponents = [
-  #    "default_config"
-  #    "systemmonitor"
-  #    "esphome"
-  #    "mqtt"
-  #  ];
-  #  extraPackages = python3Packages: with python3Packages; [
-  #     glances-api
-  #  ];
-  #};
-
-  #systemd.services.glances = {
-  #  description = "Glances system monitor";
-  #  wantedBy = [ "multi-user.target" ];
-  #  serviceConfig = {
-  #     ExecStart = "${pkgs.glances}/bin/glances -w";
-  #     Restart = "always";
-  #  };
-  #};
-
-  #services.zigbee2mqtt = {
-  #  enable = true;
-  #  settings = {
-  #    homeassistant.enabled = config.services.home-assistant.enable;
-  #    permit_join = true;
-  #    serial = {
-  #      port = "/dev/zigbee_adapter";
-  #      adapter = "zstack";
-  #    };
-  #    frontend.enabled = true;
-  #    mqtt = {
-  #      server = "mqtt://127.0.0.1:1883";
-  #    };
-  #  };
-  #};
-
-  #services.mosquitto = {
-  #  enable = true;
-  #  listeners = [{
-  #    address = "127.0.0.1";
-  #    port = 1883;
-  #    acl = [ "pattern readwrite #" ];
-  #    omitPasswordAuth = true;
-  #    settings.allow_anonymous = true;
-  #  }];
-  #};
+  systemd.services.glances = {
+    description = "Glances system monitor";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+       ExecStart = "${pkgs.glances}/bin/glances -w";
+       Restart = "always";
+    };
+  };
 }
