@@ -41,6 +41,7 @@ in
     socat
     rkdeveloptool
     sops
+    neomutt
 
     # Dev
     distrobox

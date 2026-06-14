@@ -76,6 +76,11 @@
       key = "<leader>9";
       action.__raw = "function() require'harpoon':list():select(9) end";
     }
+    {
+      mode = "n";
+      key = "<leader>ff";
+      action.__raw = "function() vim.lsp.buf.format({ async = true }) end";
+    }
   ];
 
 }

@@ -37,7 +37,7 @@
     markdown-preview.settings.auto_start = 1;
 
     # LSP
-    lsp-format.enable = true;
+    lsp-format.enable = false;
     lsp.enable = true;
     lsp.inlayHints = true;
     lsp.servers = {
