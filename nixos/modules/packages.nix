@@ -42,11 +42,6 @@ in
     rkdeveloptool
     sops
 
-    # Virtualization
-    spice
-    win-spice
-    spice-gtk
-
     # Dev
     distrobox
     podman-tui
