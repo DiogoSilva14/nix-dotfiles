@@ -42,6 +42,7 @@ in
     rkdeveloptool
     sops
     neomutt
+    b4
 
     # Dev
     distrobox
