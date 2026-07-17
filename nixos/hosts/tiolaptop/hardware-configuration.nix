@@ -31,10 +31,7 @@
     HandleLidSwitchExternalPower = "suspend-then-hibernate";
     HandleLibSwitchDocker = "ignore";
   };
-  systemd.sleep.extraConfig = ''
-    HibernateDelaySec=30m
-    SuspendState=mem
-  '';
+  systemd.sleep.settings.Sleep.HibernateDelaySec = "30m";
   powerManagement.powertop.enable = true;
   services.udev.extraRules = ''
     ACTION=="add" SUBSYSTEM=="pci" ATTR{vendor}=="0x8086" ATTR{device}=="0x51b9" ATTR{power/wakeup}="disabled"

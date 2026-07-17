@@ -20,7 +20,6 @@
     libreoffice
     qbittorrent
     firefox
-    bitwarden-desktop
     obsidian
     obs-studio
     gimp
