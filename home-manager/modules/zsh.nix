@@ -23,7 +23,7 @@
       fhs = "nix develop ${fhsDir}";
       fd = "cd ${flakeDir}";
       v = "nvim";
-      ssh = "TERM=xterm ssh";
+      ssh = "TERM=xterm-256color ssh";
     };
 
     history.size = 10000;
