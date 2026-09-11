@@ -1,6 +1,5 @@
 {
   imports = [
-    ./android-stuff.nix
     ./bootloader.nix
     ./general.nix
     ./lang.nix
