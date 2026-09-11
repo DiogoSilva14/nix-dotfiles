@@ -8,7 +8,7 @@
 
     containers = {
       pihole = {
-        image = "pihole/pihole:latest";
+        image = "pihole/pihole:2026.05.0";
 
         autoStart = true;
 
@@ -34,7 +34,7 @@
       };
 
       couchdb = {
-        image = "couchdb:latest";
+        image = "couchdb:3.5.1";
 
         autoStart = true;
 
@@ -49,7 +49,7 @@
       };
 
       jellyfin = {
-        image = "jellyfin/jellyfin:latest";
+        image = "jellyfin/jellyfin:10.11.9";
 
         autoStart = true;
 
@@ -71,7 +71,7 @@
       };
 
       nextcloud-db = {
-        image = "mariadb:lts";
+        image = "mariadb:11.8-noble";
 
         autoStart = true;
 
@@ -96,7 +96,7 @@
       };
 
       nextcloud-redis = {
-        image = "redis:alpine";
+        image = "redis:8.6.3";
 
         autoStart = true;
 
@@ -104,7 +104,7 @@
       };
 
       nextcloud = {
-        image = "nextcloud:latest";
+        image = "nextcloud:stable";
 
         autoStart = true;
 
@@ -134,7 +134,7 @@
       };
 
       qbittorrent = {
-        image = "lscr.io/linuxserver/qbittorrent:latest";
+        image = "lscr.io/linuxserver/qbittorrent:5.2.1";
 
         autoStart = true;
 
@@ -153,7 +153,7 @@
       };
 
       homeassistant = {
-        image = "ghcr.io/home-assistant/home-assistant:stable";
+        image = "ghcr.io/home-assistant/home-assistant:2026.5.4";
 
         autoStart = true;
 
@@ -168,6 +168,24 @@
           "--network=host"
           "--privileged"
         ];
+      };
+
+      homepage = {
+        image = "ghcr.io/gethomepage/homepage:v1.13.2";
+
+        autostart = true;
+
+        volumes = [
+          "/data/containers/homepage/config:/app/config"
+          "/var/run/docker.sock:/var/run/docker.sock:ro"
+        ];
+
+        environment = {
+          TZ = "Europe/Vienna";
+          HOMEPAGE_ALLOWED_HOSTS = "homepage.app";
+        };
+
+        extraOptions = [ "--network=host" ];
       };
     };
   };
@@ -187,8 +205,8 @@
     description = "Glances system monitor";
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
-       ExecStart = "${pkgs.glances}/bin/glances -w";
-       Restart = "always";
+      ExecStart = "${pkgs.glances}/bin/glances -w";
+      Restart = "always";
     };
   };
 }
