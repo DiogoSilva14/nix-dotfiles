@@ -191,9 +191,4 @@
        Restart = "always";
     };
   };
-
-  services.distccd = {
-    enable = true;
-    maxJobs = 5;
-  };
 }
