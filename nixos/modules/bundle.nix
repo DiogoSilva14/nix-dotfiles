@@ -1,11 +1,12 @@
 {
   imports = [
+    ./android-stuff.nix
     ./bootloader.nix
     ./general.nix
     ./lang.nix
     ./networking.nix
     ./packages.nix
-    ./users.nix
     ./sops.nix
+    ./users.nix
   ];
 }

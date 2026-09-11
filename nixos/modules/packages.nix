@@ -57,6 +57,8 @@ in
     wget
     sbctl
     tpm2-tss
+    usbutils
+    android-tools
   ];
 
   environment.etc."screenrc".text = ''

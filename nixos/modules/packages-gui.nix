@@ -1,6 +1,6 @@
 { pkgs, lib, ... }: {
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "libfprint-2-tod1-broadcom"
+    #"libfprint-2-tod1-broadcom"
     "obsidian"
     "spotify"
   ];
@@ -26,7 +26,7 @@
     spotify
   ];
 
-  services.fprintd.enable = true;
-  services.fprintd.tod.enable = true;
-  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-broadcom;
+  #services.fprintd.enable = true;
+  #services.fprintd.tod.enable = true;
+  #services.fprintd.tod.driver = pkgs.libfprint-2-tod1-broadcom;
 }
