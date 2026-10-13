@@ -173,7 +173,7 @@
       homepage = {
         image = "ghcr.io/gethomepage/homepage:v1.13.2";
 
-        autostart = true;
+        autoStart = true;
 
         volumes = [
           "/data/containers/homepage/config:/app/config"
@@ -182,7 +182,7 @@
 
         environment = {
           TZ = "Europe/Vienna";
-          HOMEPAGE_ALLOWED_HOSTS = "homepage.app";
+          HOMEPAGE_ALLOWED_HOSTS = "tioserver";
         };
 
         extraOptions = [ "--network=host" ];
