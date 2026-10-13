@@ -20,7 +20,6 @@
       providers.wl-copy.enable = true;
     };
 
-    # Highlight white characters
     extraConfigLua = ''
       vim.opt.nu = true
 

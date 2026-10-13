@@ -24,6 +24,8 @@
     obs-studio
     gimp
     spotify
+    signal-desktop
+    darktable
   ];
 
   #services.fprintd.enable = true;

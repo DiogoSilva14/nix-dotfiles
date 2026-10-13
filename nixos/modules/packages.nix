@@ -46,8 +46,6 @@ in
 
     # Dev
     distrobox
-    podman-tui
-    podman-compose
 
     # Other
     rebuild
