@@ -2,7 +2,7 @@
   imports = [
     ./backups.nix
     ./hetzner.nix
-    ./server-services.nix
+    ./services.nix
     ./sops.nix
   ];
 }

@@ -20,4 +20,9 @@
     sopsFile = ../../../secrets/restic.yaml;
     format = "yaml";
   };
+
+  sops.secrets.immich_env = {
+    sopsFile = ../../../secrets/immich.env;
+    format = "dotenv";
+  };
 }

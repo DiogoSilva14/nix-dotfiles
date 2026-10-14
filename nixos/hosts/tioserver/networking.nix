@@ -14,7 +14,11 @@
 
   networking.enableIPv6 = false;
 
-  services.tailscale.useRoutingFeatures = "server";
+  services.tailscale = {
+    useRoutingFeatures = "server";
+    extraUpFlags = [ "--netfilter-mode=nodivert" ];
+  };
+
   systemd.services.ethtool-tuning = {
     description = "Enable UDP GRO forwarding for Tailscale";
     wantedBy = [ "multi-user.target" ];

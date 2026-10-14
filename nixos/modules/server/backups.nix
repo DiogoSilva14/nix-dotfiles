@@ -5,6 +5,7 @@
       "/data/containers/couchdb"
       "/data/containers/nextcloud"
       "/data/containers/nextcloud-db"
+      "/data/containers/immich"
     ];
 
     repository = "/mnt/hetzner/restic/docker_volumes";
