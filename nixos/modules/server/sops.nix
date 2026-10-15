@@ -25,4 +25,28 @@
     sopsFile = ../../../secrets/immich.env;
     format = "dotenv";
   };
+
+  sops.secrets.tls_cert = {
+    sopsFile = ../../../secrets/caddy-tls.yaml;
+    format = "yaml";
+    owner = "caddy";
+    group = "caddy";
+    mode = "0400";
+  };
+
+  sops.secrets.tls_key = {
+    sopsFile = ../../../secrets/caddy-tls.yaml;
+    format = "yaml";
+    owner = "caddy";
+    group = "caddy";
+    mode = "0400";
+  };
+
+  sops.secrets.desec_token = {
+    sopsFile = ../../../secrets/desec.env;
+    format = "dotenv";
+    owner = "caddy";
+    group = "caddy";
+    mode = "0400";
+  };
 }

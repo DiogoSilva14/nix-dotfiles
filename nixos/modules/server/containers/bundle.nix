@@ -2,6 +2,7 @@
   imports = [
     ./couchdb.nix
     ./homeassistant.nix
+    ./homepage.nix
     ./immich.nix
     ./jellyfin.nix
     ./nextcloud.nix

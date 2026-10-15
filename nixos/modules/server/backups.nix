@@ -3,9 +3,11 @@
   services.restic.backups.volumes = {
     paths = [
       "/data/containers/couchdb"
+      "/data/containers/homeassistant"
+      "/data/containers/homepage"
+      "/data/containers/immich"
       "/data/containers/nextcloud"
       "/data/containers/nextcloud-db"
-      "/data/containers/immich"
     ];
 
     repository = "/mnt/hetzner/restic/docker_volumes";

@@ -47,7 +47,7 @@
       autoStart = true;
 
       ports = [
-        "2283:2283/tcp"
+        "127.0.0.1:2283:2283/tcp"
       ];
 
       volumes = [

@@ -14,11 +14,6 @@
         config.sops.secrets.nextcloud_env.path
       ];
 
-      environment = {
-        MYSQL_DATABASE = "nextcloud";
-        MYSQL_USER = "nextcloud";
-      };
-
       extraOptions = [ "--network=nextcloud" ];
 
       cmd = [
@@ -45,7 +40,7 @@
       ];
 
       ports = [
-        "8080:80"
+        "127.0.0.1:8080:80"
       ];
 
       volumes = [
@@ -55,11 +50,6 @@
       environmentFiles = [
         config.sops.secrets.nextcloud_env.path
       ];
-
-      environment = {
-        MYSQL_DATABASE = "nextcloud";
-        MYSQL_USER = "nextcloud";
-      };
 
       extraOptions = [ "--network=nextcloud" ];
     };

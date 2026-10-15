@@ -8,8 +8,13 @@
 
   networking.firewall = {
     enable = true;
+    trustedInterfaces = [ ];
     allowedTCPPorts = [ 22 ];
-    trustedInterfaces = [ "tailscale0" ];
+    interfaces."tailscale0" = {
+      allowedTCPPorts = [
+        443
+      ];
+    };
   };
 
   networking.enableIPv6 = false;

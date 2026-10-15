@@ -7,8 +7,7 @@
       autoStart = true;
 
       ports = [
-        "8096:8096/tcp"
-        "7359:7359/tcp"
+        "127.0.0.1:8096:8096/tcp"
       ];
 
       volumes = [
