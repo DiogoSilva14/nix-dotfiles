@@ -5,13 +5,10 @@
   virtualisation.docker.enable = true;
   virtualisation.oci-containers.backend = "docker";
 
-  systemd.services.glances = {
-    description = "Glances system monitor";
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.glances}/bin/glances -w";
-      Restart = "always";
-    };
+  services.glances = {
+    enable = true;
+    openFirewall = false;
+    extraArgs = [ "-w" "--bind" "127.0.0.1" ];
   };
 
   imports = [ ./containers/bundle.nix ];
