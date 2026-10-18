@@ -5,5 +5,6 @@
     ./hetzner.nix
     ./services.nix
     ./sops.nix
+    ./smb.nix
   ];
 }
