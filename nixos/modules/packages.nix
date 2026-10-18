@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 let
   rebuild = pkgs.writeTextFile {
     name = "rebuild";
@@ -43,6 +43,7 @@ in
     sops
     neomutt
     b4
+    nvtopPackages.intel
 
     # Dev
     distrobox
@@ -57,6 +58,7 @@ in
     tpm2-tss
     usbutils
     android-tools
+    dnsmasq
   ];
 
   environment.etc."screenrc".text = ''
@@ -64,6 +66,9 @@ in
   '';
 
   virtualisation.podman.enable = true;
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+  programs.virt-manager.enable = true;
 
   services.fwupd.enable = true;
 
