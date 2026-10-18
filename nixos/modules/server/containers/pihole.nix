@@ -2,7 +2,7 @@
 {
   virtualisation.oci-containers.containers = {
     pihole = {
-      image = "pihole/pihole:2026.05.0";
+      image = "pihole/pihole:2026.09.0";
 
       autoStart = true;
 

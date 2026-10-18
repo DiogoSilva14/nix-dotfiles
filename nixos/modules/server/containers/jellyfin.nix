@@ -2,7 +2,7 @@
 {
   virtualisation.oci-containers.containers = {
     jellyfin = {
-      image = "jellyfin/jellyfin:10.11.9";
+      image = "jellyfin/jellyfin:12.2";
 
       autoStart = true;
 

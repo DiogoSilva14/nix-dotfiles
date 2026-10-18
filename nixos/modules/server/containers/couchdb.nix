@@ -1,7 +1,7 @@
 {
   virtualisation.oci-containers.containers = {
       couchdb = {
-        image = "couchdb:3.5.1";
+        image = "couchdb:3.5.3";
 
         autoStart = true;
 

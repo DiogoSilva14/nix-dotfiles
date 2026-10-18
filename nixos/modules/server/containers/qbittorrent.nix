@@ -1,7 +1,7 @@
 {
   virtualisation.oci-containers.containers = {
     qbittorrent = {
-      image = "lscr.io/linuxserver/qbittorrent:5.2.1";
+      image = "lscr.io/linuxserver/qbittorrent:5.2.4";
 
       autoStart = true;
 
@@ -16,7 +16,9 @@
         WEBUI_PORT = "8090";
       };
 
-      extraOptions = [ "--network=host" ];
+      extraOptions = [
+        "--network=host"
+      ];
     };
   };
 }
