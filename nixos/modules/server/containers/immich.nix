@@ -53,6 +53,7 @@
       volumes = [
         "/data/containers/immich/library:/data"
         "/etc/localtime:/etc/localtime:ro"
+        "/data/shares/photography:/mnt/photography:ro"
       ];
 
       dependsOn = [

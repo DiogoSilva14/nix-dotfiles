@@ -2,7 +2,7 @@
   imports = [
     ./backups.nix
     ./caddy.nix
-    ./hetzner.nix
+    ./backup-mounts.nix
     ./services.nix
     ./sops.nix
     ./smb.nix

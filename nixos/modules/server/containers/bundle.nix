@@ -1,5 +1,6 @@
 {
   imports = [
+    ./bazarr.nix
     ./couchdb.nix
     ./homeassistant.nix
     ./homepage.nix

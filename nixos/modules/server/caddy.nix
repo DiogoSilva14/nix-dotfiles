@@ -26,6 +26,9 @@ in
       @immich host immich.${domain}
       handle @immich { reverse_proxy 127.0.0.1:2283 }
 
+      @bazarr host bazarr.${domain}
+      handle @bazarr { reverse_proxy 127.0.0.1:6767 }
+
       @couchdb host couchdb.${domain}
       handle @couchdb { reverse_proxy 127.0.0.1:5984 }
 

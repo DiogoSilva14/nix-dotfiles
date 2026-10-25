@@ -25,8 +25,10 @@ let
 
     text = let
       luksDevice01 = "/dev/disk/by-label/NIXLUKS";
+      luksDevice02 = "/dev/disk/by-uuid/e8b9159c-8144-486b-8563-60981a256288";
     in ''
       sudo systemd-cryptenroll --wipe-slot=tpm2 --tpm2-device=auto --tpm2-pcrs=0+2+7+12 ${luksDevice01}
+      sudo systemd-cryptenroll --wipe-slot=tpm2 --tpm2-device=auto --tpm2-pcrs=0+2+7+12 ${luksDevice02}
     '';
   };
 in
