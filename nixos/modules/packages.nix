@@ -52,6 +52,7 @@ in
 
     # Dev
     distrobox
+    opencode
 
     # Other
     rebuild
