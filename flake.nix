@@ -29,6 +29,7 @@
   outputs = { self, nixpkgs, lanzaboote, home-manager, nixvim, catppuccin, sops-nix, ... }@inputs:
   let
     system = "x86_64-linux";
+    pkgs = import nixpkgs { inherit system; };
 
     mkNixos = host: isHeadless:
       nixpkgs.lib.nixosSystem {
@@ -58,10 +59,25 @@
         specialArgs = { inherit inputs; };
       };
 
+    mkHome = file:
+      home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        modules = [
+          file
+          nixvim.homeModules.nixvim
+          catppuccin.homeModules.catppuccin
+        ];
+      };
+
   in {
     nixosConfigurations = {
       tiolaptop = mkNixos "tiolaptop" false;
       tioserver = mkNixos "tioserver" true;
+    };
+
+    homeConfigurations = {
+      dsilva3 = mkHome ./home-manager/home_dsilva3.nix;
     };
   };
 }

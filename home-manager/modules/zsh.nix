@@ -58,6 +58,10 @@
         PS1="[$CONTAINER_ID] $PS1"
       fi
 
+      if [ -f ~/.myrc ]; then
+        source ~/.myrc
+      fi
+
     '';
   };
 }

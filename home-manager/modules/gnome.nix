@@ -52,7 +52,7 @@
 
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
         binding = "<Super>t";
-        command = "${pkgs.kitty}/bin/kitty";
+        command = "${config.programs.kitty.package}/bin/kitty";
         name = "Shell";
       };
 
