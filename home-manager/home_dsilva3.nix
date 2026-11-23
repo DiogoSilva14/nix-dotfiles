@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   # This machine is Ubuntu, not NixOS. Nix's dynamic loader looks for its
   # ld.so.cache inside the nix store, so nix's libglvnd cannot find the system
@@ -24,6 +24,9 @@ in
     package = kitty;
     settings.shell = "${pkgs.zsh}/bin/zsh";
   };
+
+  # Work machine: same name as modules/git.nix, but the work email.
+  programs.git.settings.user.email = lib.mkForce "dsilva3@snapchat.com";
 
   home = {
     username = "dsilva3";

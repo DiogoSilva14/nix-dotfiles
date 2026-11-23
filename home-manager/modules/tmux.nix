@@ -1,7 +1,11 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   programs.tmux = {
     enable = true;
+
+    # Open panes with the zsh home-manager manages, so the zsh module's
+    # aliases, oh-my-zsh and initContent apply inside tmux.
+    shell = "${config.programs.zsh.package}/bin/zsh";
 
     extraConfig = ''
       #set -ag status-right '#{sysstat_cpu} | | #{battery_status_bg} Batt: #{battery_icon} #{battery_percentage} #{battery_remain} | %a %h-%d %H:%M '
